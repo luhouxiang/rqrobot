@@ -25,12 +25,6 @@ except ImportError:
 from setuptools import find_packages, setup
 
 
-def update_requirements(from_reqs, to_reqs):
-    from_req_dict = {req.name: req for req in from_reqs}
-    from_req_dict.update({req.name: req for req in to_reqs})
-    return from_req_dict.values()
-
-
 with open(join(dirname(__file__), 'rqrobot/VERSION.txt'), 'rb') as f:
     version = f.read().decode('ascii').strip()
 
