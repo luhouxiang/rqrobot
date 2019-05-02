@@ -23,16 +23,16 @@ import yaml
 import simplejson as json
 import six
 
-from rqalpha.const import RUN_TYPE, PERSIST_MODE, MARKET
-from rqalpha.utils import RqAttrDict, logger
-from rqalpha.utils.i18n import gettext as _, localization
-from rqalpha.utils.dict_func import deep_update
-from rqalpha.utils.py2 import to_utf8
-from rqalpha.utils.logger import system_log
-from rqalpha.mod.utils import mod_config_value_parse
+from rqrobot.const import RUN_TYPE, PERSIST_MODE, MARKET
+from rqrobot.utils import RqAttrDict, logger
+from rqrobot.utils.i18n import gettext as _, localization
+from rqrobot.utils.dict_func import deep_update
+from rqrobot.utils.py2 import to_utf8
+from rqrobot.utils.logger import system_log
+from rqrobot.mod.utils import mod_config_value_parse
 
 
-rqalpha_path = "~/.rqalpha"
+rqrobot_path = "~/.rqrobot"
 
 
 def load_yaml(path):
@@ -50,12 +50,12 @@ default_mod_config_path = os.path.join(os.path.dirname(__file__), '..', 'mod_con
 
 
 def user_mod_conf_path():
-    return os.path.join(os.path.expanduser(rqalpha_path), 'mod_config.yml')
+    return os.path.join(os.path.expanduser(rqrobot_path), 'mod_config.yml')
 
 
 def get_mod_conf():
     base = load_yaml(default_mod_config_path)
-    user_mod_conf = os.path.join(os.path.expanduser(rqalpha_path), 'mod_config.yml')
+    user_mod_conf = os.path.join(os.path.expanduser(rqrobot_path), 'mod_config.yml')
     user = load_yaml(user_mod_conf) if os.path.exists(user_mod_conf) else {}
     deep_update(user, base)
     return base
@@ -81,7 +81,7 @@ def default_config():
 
 
 def user_config():
-    return load_config_from_folder(rqalpha_path)
+    return load_config_from_folder(rqrobot_path)
 
 
 def project_config():
@@ -180,7 +180,7 @@ def parse_config(config_args, config_path=None, click_type=False, source_code=No
     config.base.end_date = _to_date(config.base.end_date)
 
     if config.base.data_bundle_path is None:
-        config.base.data_bundle_path = os.path.join(os.path.expanduser(rqalpha_path), "bundle")
+        config.base.data_bundle_path = os.path.join(os.path.expanduser(rqrobot_path), "bundle")
 
     config.base.run_type = parse_run_type(config.base.run_type)
     config.base.accounts = parse_accounts(config.base.accounts)

@@ -91,7 +91,7 @@ after_trading
 交易相关函数
 =================
 
-..  module:: rqalpha.api
+..  module:: rqrobot.api
     :synopsis: API
 
 🆕 order - 智能下单「通用」
@@ -614,7 +614,7 @@ unsubscribe
 Context属性
 =================
 
-..  module:: rqalpha.core.strategy_context
+..  module:: rqrobot.core.strategy_context
 
 ..  autoclass:: RunInfo
     :members:
@@ -627,7 +627,7 @@ Context属性
 
 Bar
 ------------------------------------------------------
-..  module:: rqalpha.model.bar
+..  module:: rqrobot.model.bar
 
 ..  autoclass:: BarObject
     :members:
@@ -636,7 +636,7 @@ Bar
 
 Snapshot
 ------------------------------------------------------
-..  module:: rqalpha.model.snapshot
+..  module:: rqrobot.model.snapshot
 
 ..  autoclass:: SnapshotObject
     :members:
@@ -645,7 +645,7 @@ Snapshot
 
 Order
 ------------------------------------------------------
-..  module:: rqalpha.model.order
+..  module:: rqrobot.model.order
 
 ..  autoclass:: Order
     :members:
@@ -655,7 +655,7 @@ Order
 Portfolio
 ------------------------------------------------------
 
-.. module:: rqalpha.model.portfolio
+.. module:: rqrobot.model.portfolio
 
 .. autoclass:: Portfolio
     :members:
@@ -665,7 +665,7 @@ Portfolio
 StockAccount
 ------------------------------------------------------
 
-.. module:: rqalpha.mod.rqalpha_mod_sys_accounts.account_model.stock_account
+.. module:: rqrobot.mod.rqrobot_mod_sys_accounts.account_model.stock_account
 
 .. autoclass:: StockAccount
     :members:
@@ -675,7 +675,7 @@ StockAccount
 FutureAccount
 ------------------------------------------------------
 
-.. module:: rqalpha.mod.rqalpha_mod_sys_accounts.account_model.future_account
+.. module:: rqrobot.mod.rqrobot_mod_sys_accounts.account_model.future_account
 
 .. autoclass:: FutureAccount
     :members:
@@ -684,7 +684,7 @@ FutureAccount
 
 StockPosition
 ------------------------------------------------------
-.. module:: rqalpha.mod.rqalpha_mod_sys_accounts.position_model.stock_position
+.. module:: rqrobot.mod.rqrobot_mod_sys_accounts.position_model.stock_position
 
 ..  autoclass:: StockPosition
     :members:
@@ -693,7 +693,7 @@ StockPosition
 
 FuturePosition
 ------------------------------------------------------
-.. module:: rqalpha.mod.rqalpha_mod_sys_accounts.position_model.future_position
+.. module:: rqrobot.mod.rqrobot_mod_sys_accounts.position_model.future_position
 
 ..  autoclass:: FuturePosition
     :members:
@@ -704,7 +704,7 @@ FuturePosition
 
 Instrument
 ------------------------------------------------------
-..  module:: rqalpha.model
+..  module:: rqrobot.model
 
 ..  py:class:: Instrument
 

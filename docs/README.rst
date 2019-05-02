@@ -1,11 +1,11 @@
 
 =================================
-RQAlpha Documentation Instruction
+rqrobot Documentation Instruction
 =================================
 
 
-RQAlpha 使用 Sphinx 进行文档编写。
-取自rqalpha3.2.0
+rqrobot 使用 Sphinx 进行文档编写。
+取自rqrobot3.2.0
 
 Requirements
 ------------

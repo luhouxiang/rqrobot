@@ -16,7 +16,7 @@
 
 import os
 
-from rqalpha.interface import AbstractPersistProvider
+from rqrobot.interface import AbstractPersistProvider
 
 
 class DiskPersistProvider(AbstractPersistProvider):

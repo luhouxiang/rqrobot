@@ -18,9 +18,9 @@ import six
 import json
 import copy
 
-from rqalpha.events import EVENT, Event
-from rqalpha.environment import Environment
-from rqalpha.model.instrument import Instrument
+from rqrobot.events import EVENT, Event
+from rqrobot.environment import Environment
+from rqrobot.model.instrument import Instrument
 
 
 class StrategyUniverse(object):

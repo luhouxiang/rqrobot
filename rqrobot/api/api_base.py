@@ -29,27 +29,27 @@ import numpy as np
 import six
 from dateutil.parser import parse
 
-from rqalpha.api import names
-from rqalpha.environment import Environment
-from rqalpha.execution_context import ExecutionContext
-from rqalpha.utils import to_industry_code, to_sector_name, unwrapper, is_valid_price
-from rqalpha.utils.exception import patch_user_exc, patch_system_exc, EXC_EXT_NAME, RQInvalidArgument
-from rqalpha.utils.i18n import gettext as _
+from rqrobot.api import names
+from rqrobot.environment import Environment
+from rqrobot.execution_context import ExecutionContext
+from rqrobot.utils import to_industry_code, to_sector_name, unwrapper, is_valid_price
+from rqrobot.utils.exception import patch_user_exc, patch_system_exc, EXC_EXT_NAME, RQInvalidArgument
+from rqrobot.utils.i18n import gettext as _
 # noinspection PyUnresolvedReferences
-from rqalpha.utils.logger import user_log as logger
-from rqalpha.utils.logger import user_system_log
+from rqrobot.utils.logger import user_log as logger
+from rqrobot.utils.logger import user_system_log
 
-from rqalpha.model.instrument import SectorCodeItem, IndustryCodeItem
-from rqalpha.utils.arg_checker import apply_rules, verify_that
+from rqrobot.model.instrument import SectorCodeItem, IndustryCodeItem
+from rqrobot.utils.arg_checker import apply_rules, verify_that
 # noinspection PyUnresolvedReferences
-from rqalpha.model.instrument import Instrument, SectorCode as sector_code, IndustryCode as industry_code
+from rqrobot.model.instrument import Instrument, SectorCode as sector_code, IndustryCode as industry_code
 # noinspection PyUnresolvedReferences
-from rqalpha.const import (EXECUTION_PHASE, EXC_TYPE, ORDER_STATUS, SIDE, POSITION_EFFECT, ORDER_TYPE, MATCHING_TYPE,
+from rqrobot.const import (EXECUTION_PHASE, EXC_TYPE, ORDER_STATUS, SIDE, POSITION_EFFECT, ORDER_TYPE, MATCHING_TYPE,
                            RUN_TYPE, POSITION_DIRECTION)
 # noinspection PyUnresolvedReferences
-from rqalpha.model.order import Order, MarketOrder, LimitOrder, OrderStyle
+from rqrobot.model.order import Order, MarketOrder, LimitOrder, OrderStyle
 # noinspection PyUnresolvedReferences
-from rqalpha.events import EVENT
+from rqrobot.events import EVENT
 
 
 __all__ = [

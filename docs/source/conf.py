@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# rqalpha documentation build configuration file, created by
+# rqrobot documentation build configuration file, created by
 # sphinx-quickstart on Fri Feb  3 09:58:41 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -58,7 +58,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'rqalpha'
+project = 'rqrobot'
 copyright = '2017, RiceQuant'
 author = 'RiceQuant'
 
@@ -69,8 +69,8 @@ author = 'RiceQuant'
 # The short X.Y version.
 
 try:
-    import rqalpha
-    version = rqalpha.__main_version__
+    import rqrobot
+    version = rqrobot.__main_version__
     release = version
 except ImportError:
     version = '0.0'
@@ -166,7 +166,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = 'rqalpha v1.0'
+# html_title = 'rqrobot v1.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -266,7 +266,7 @@ html_show_copyright = True
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'rqalphadoc'
+htmlhelp_basename = 'rqrobotdoc'
 
 # Use this kernel instead of the one stored in the notebook metadata:
 nbsphinx_kernel_name = 'python3'

@@ -4,7 +4,7 @@
 10分钟教程
 ====================
 
-在本教程中，我们假设 RQAlpha 已经正确安装在您的系统中，并且已经完成了相应回测数据的同步，如果有任何安装相关的问题，请首先查看 :ref:`intro-install`
+在本教程中，我们假设 rqrobot 已经正确安装在您的系统中，并且已经完成了相应回测数据的同步，如果有任何安装相关的问题，请首先查看 :ref:`intro-install`
 
 策略运行流程
 ------------------------------------------------------
@@ -22,27 +22,27 @@
 *   起始资金
 *   Benchmark
 
-假如我们的策略存放在了 :code:`./rqalpha/examples/buy_and_hold.py` 路径下， 数据源存放在 :code:`./rqalpha/bundle/` 路径下，回测的起始时间为 :code:`2016-06-01`, 结束时间为 :code:`2016-12-01`，我们给策略分配的起始资金为 :code:`100000`, Benchmark 设置为 :code:`000300.XSHG`
+假如我们的策略存放在了 :code:`./rqrobot/examples/buy_and_hold.py` 路径下， 数据源存放在 :code:`./rqrobot/bundle/` 路径下，回测的起始时间为 :code:`2016-06-01`, 结束时间为 :code:`2016-12-01`，我们给策略分配的起始资金为 :code:`100000`, Benchmark 设置为 :code:`000300.XSHG`
 
 那么我们通过如下命令来运行回测
 
 ..  code-block:: bash
 
-    rqalpha run -f ./rqalpha/examples/buy_and_hold.py -d ./rqalpha/bundle/ -s 2016-06-01 -e 2016-12-01 --account stock 100000 --benchmark 000300.XSHG
+    rqrobot run -f ./rqrobot/examples/buy_and_hold.py -d ./rqrobot/bundle/ -s 2016-06-01 -e 2016-12-01 --account stock 100000 --benchmark 000300.XSHG
 
 如果我们想要以图形的方式查看回测的结果， 则增加 :code:`--plot` 参数
 
 ..  code-block:: bash
 
-    rqalpha run -f ./rqalpha/examples/buy_and_hold.py -d ./rqalpha/bundle/ -s 2016-06-01 -e 2016-12-01 --account stock 100000 --benchmark 000300.XSHG --plot
+    rqrobot run -f ./rqrobot/examples/buy_and_hold.py -d ./rqrobot/bundle/ -s 2016-06-01 -e 2016-12-01 --account stock 100000 --benchmark 000300.XSHG --plot
 
-.. image:: https://raw.githubusercontent.com/ricequant/rq-resource/master/rqalpha/buy_and_hold.png
+.. image:: https://raw.githubusercontent.com/ricequant/rq-resource/master/rqrobot/buy_and_hold.png
 
 如果想把回测的数据保存下来，可以通过 :code:`-o` 参数将结果保存成 :code:`pkl` 文件。
 
 ..  code-block:: bash
 
-    rqalpha run -f ./rqalpha/examples/buy_and_hold.py -d ./rqalpha/bundle/ -s 2016-06-01 -e 2016-12-01 --account stock 100000 --benchmark 000300.XSHG --plot -o result.pkl
+    rqrobot run -f ./rqrobot/examples/buy_and_hold.py -d ./rqrobot/bundle/ -s 2016-06-01 -e 2016-12-01 --account stock 100000 --benchmark 000300.XSHG --plot -o result.pkl
 
 
 等回测结束后可以通过 :code:`pandas.read_pickle` 函数来读取数据进行之后的数据分析。
@@ -61,11 +61,11 @@
 策略编写流程
 ------------------------------------------------------
 
-RQAlpha 抽离了策略框架的所有技术细节，以API的方式提供给策略研发者用于编写策略，从而避免陷入过多的技术细节，而非金融程序建模本身。
+rqrobot 抽离了策略框架的所有技术细节，以API的方式提供给策略研发者用于编写策略，从而避免陷入过多的技术细节，而非金融程序建模本身。
 
-RQAlpha 的 API 主要分为三类：约定函数、数据查询和交易接口。
+rqrobot 的 API 主要分为三类：约定函数、数据查询和交易接口。
 
-*   约定函数: 作为 API 的入口函数，用户必须实现对应的约定函数才可以正确的使用RQAlpha
+*   约定函数: 作为 API 的入口函数，用户必须实现对应的约定函数才可以正确的使用rqrobot
 
     *   :func:`init` : 初始化方法，会在程序启动的时候执行
     *   :func:`handle_bar`: bar数据更新时会自动触发调用
@@ -254,7 +254,7 @@ Ricequant 金融、财务、合约历史数据等数据接口请查看 :ref:`api
 
 .. code-block:: bash
 
-    $ rqalpha run -s 2014-01-01 -e 2016-01-01 -f rqalpha/examples/golden_cross.py --account stock 100000 -p -bm 000001.XSHE
+    $ rqrobot run -s 2014-01-01 -e 2016-01-01 -f rqrobot/examples/golden_cross.py --account stock 100000 -p -bm 000001.XSHE
 
 
-.. image:: https://raw.githubusercontent.com/ricequant/rq-resource/master/rqalpha/golden_cross.png
+.. image:: https://raw.githubusercontent.com/ricequant/rq-resource/master/rqrobot/golden_cross.png

@@ -16,10 +16,10 @@
 
 import numpy as np
 
-from rqalpha.interface import AbstractPosition
-from rqalpha.environment import Environment
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils.logger import user_system_log
+from rqrobot.interface import AbstractPosition
+from rqrobot.environment import Environment
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils.logger import user_system_log
 
 
 class Positions(dict):

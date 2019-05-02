@@ -1,4 +1,4 @@
-from rqalpha.api import *
+from rqrobot.api import *
 
 
 def init(context):
@@ -27,7 +27,7 @@ __config__ = {
     "mod": {
         "extend_api_demo": {
             "enabled": True,
-            "lib": "rqalpha.examples.extend_api.rqalpha_mod_extend_api_demo",
+            "lib": "rqrobot.examples.extend_api.rqrobot_mod_extend_api_demo",
             "csv_path": "../IF1706_20161108.csv"
         }
     }

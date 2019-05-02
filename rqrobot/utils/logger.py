@@ -18,7 +18,7 @@ from datetime import datetime
 import logbook
 from logbook import Logger, StderrHandler
 
-from rqalpha.utils.py2 import to_utf8, from_utf8
+from rqrobot.utils.py2 import to_utf8, from_utf8
 
 logbook.set_datetime_format("local")
 
@@ -37,7 +37,7 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
 
 def user_std_handler_log_formatter(record, handler):
-    from rqalpha.environment import Environment
+    from rqrobot.environment import Environment
     try:
         dt = Environment.get_instance().calendar_dt.strftime(DATETIME_FORMAT)
     except Exception:

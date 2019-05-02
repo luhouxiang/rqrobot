@@ -1,2 +1,2 @@
 # rqrobot
-取自rqalpha3.2.0
+取自rqrobot3.2.0

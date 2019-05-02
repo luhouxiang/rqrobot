@@ -1,12 +1,12 @@
 import datetime
 
-from rqalpha.utils.testing import MagicMock, BookingFixture, RQAlphaTestCase
-from rqalpha.const import POSITION_DIRECTION, SIDE, POSITION_EFFECT
-from rqalpha.events import Event, EVENT
-from rqalpha.model.trade import Trade
+from rqrobot.utils.testing import MagicMock, BookingFixture, rqrobotTestCase
+from rqrobot.const import POSITION_DIRECTION, SIDE, POSITION_EFFECT
+from rqrobot.events import Event, EVENT
+from rqrobot.model.trade import Trade
 
 
-class BookingTestCase(BookingFixture, RQAlphaTestCase):
+class BookingTestCase(BookingFixture, rqrobotTestCase):
     def __init__(self, *args, **kwargs):
         super(BookingTestCase, self).__init__(*args, **kwargs)
         pos1 = self.long_positions.get_or_create("RB1812")

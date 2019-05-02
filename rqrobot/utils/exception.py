@@ -16,7 +16,7 @@
 
 import six
 
-from rqalpha import const
+from rqrobot import const
 
 
 class CustomError(object):

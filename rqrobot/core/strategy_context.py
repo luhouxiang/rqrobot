@@ -19,11 +19,11 @@ import pickle
 
 import numpy as np
 
-from rqalpha.const import DEFAULT_ACCOUNT_TYPE
-from rqalpha.environment import Environment
-from rqalpha.utils.logger import user_system_log, system_log
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils.repr import property_repr
+from rqrobot.const import DEFAULT_ACCOUNT_TYPE
+from rqrobot.environment import Environment
+from rqrobot.utils.logger import user_system_log, system_log
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils.repr import property_repr
 
 
 class RunInfo(object):

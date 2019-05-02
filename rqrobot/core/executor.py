@@ -14,8 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from rqalpha.events import EVENT, Event
-from rqalpha.utils.rq_json import convert_dict_to_json, convert_json_to_dict
+from rqrobot.events import EVENT, Event
+from rqrobot.utils.rq_json import convert_dict_to_json, convert_json_to_dict
 
 PRE_BEFORE_TRADING = Event(EVENT.PRE_BEFORE_TRADING)
 POST_BEFORE_TRADING = Event(EVENT.POST_BEFORE_TRADING)

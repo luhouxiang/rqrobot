@@ -16,8 +16,8 @@
 
 import numpy as np
 
-from rqalpha.utils.logger import system_log
-from rqalpha.model.tick import TickObject
+from rqrobot.utils.logger import system_log
+from rqrobot.model.tick import TickObject
 
 
 class SnapshotObject(TickObject):

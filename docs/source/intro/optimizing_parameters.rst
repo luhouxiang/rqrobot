@@ -8,7 +8,7 @@
 
 .. code-block:: python
 
-    from rqalpha.api import *
+    from rqrobot.api import *
     import talib
 
 
@@ -42,7 +42,7 @@
 
     import concurrent.futures
     import multiprocessing
-    from rqalpha import run
+    from rqrobot import run
 
 
     tasks = []
@@ -62,7 +62,7 @@
 		    "end_date": "2016-01-01",
 		    "benchmark": "000001.XSHE",
 		    "frequency": "1d",
-		    "strategy_file": "rqalpha/examples/golden_cross.py",
+		    "strategy_file": "rqrobot/examples/golden_cross.py",
             "accounts": {
                 "stock": 100000
             }
@@ -115,7 +115,7 @@
 	    }
 	    vars_params = json.dumps(extra_vars).encode("utf-8").decode("utf-8")
 
-	    cmd = ("rqalpha run -fq 1d -f rqalpha/examples/golden_cross.py --start-date 2015-01-01 --end-date 2016-01-01 "
+	    cmd = ("rqrobot run -fq 1d -f rqrobot/examples/golden_cross.py --start-date 2015-01-01 --end-date 2016-01-01 "
 		   "-o results/out-{short_period}-{long_period}.pkl --account stock 100000 --progress -bm 000001.XSHE --extra-vars '{params}' ").format(
 		       short_period=short_period,
 		       long_period=long_period,

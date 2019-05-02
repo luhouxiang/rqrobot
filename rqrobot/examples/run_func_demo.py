@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from rqalpha.api import *
-from rqalpha import run_func
+from rqrobot.api import *
+from rqrobot import run_func
 
 
 def init(context):

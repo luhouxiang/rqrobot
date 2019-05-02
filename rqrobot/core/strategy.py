@@ -14,14 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from rqalpha.events import EVENT, Event
-from rqalpha.utils import run_when_strategy_not_hold
-from rqalpha.utils.logger import user_system_log
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils.exception import ModifyExceptionFromType
-from rqalpha.execution_context import ExecutionContext
-from rqalpha.const import EXECUTION_PHASE, EXC_TYPE
-from rqalpha.environment import Environment
+from rqrobot.events import EVENT, Event
+from rqrobot.utils import run_when_strategy_not_hold
+from rqrobot.utils.logger import user_system_log
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils.exception import ModifyExceptionFromType
+from rqrobot.execution_context import ExecutionContext
+from rqrobot.const import EXECUTION_PHASE, EXC_TYPE
+from rqrobot.environment import Environment
 
 
 class Strategy(object):

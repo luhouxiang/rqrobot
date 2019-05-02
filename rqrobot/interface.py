@@ -230,7 +230,7 @@ class AbstractStrategyLoader(with_metaclass(abc.ABCMeta)):
 
 class AbstractEventSource(with_metaclass(abc.ABCMeta)):
     """
-    事件源接口。RQAlpha 从此对象中获取事件，驱动整个事件循环。
+    事件源接口。rqrobot 从此对象中获取事件，驱动整个事件循环。
 
     在扩展模块中，可以通过调用 ``env.set_event_source`` 来替换默认的事件源。
     """
@@ -262,7 +262,7 @@ class AbstractEventSource(with_metaclass(abc.ABCMeta)):
 
 class AbstractPriceBoard(with_metaclass(abc.ABCMeta)):
     """
-    RQAlpha多个地方需要使用最新「行情」，不同的数据源其最新价格获取的方式不尽相同
+    rqrobot多个地方需要使用最新「行情」，不同的数据源其最新价格获取的方式不尽相同
 
     因此抽离出 `AbstractPriceBoard`, 您可以自行进行扩展并替换默认 PriceBoard
     """
@@ -290,7 +290,7 @@ class AbstractPriceBoard(with_metaclass(abc.ABCMeta)):
 
 class AbstractDataSource(object):
     """
-    数据源接口。RQAlpha 中通过 :class:`DataProxy` 进一步进行了封装，向上层提供更易用的接口。
+    数据源接口。rqrobot 中通过 :class:`DataProxy` 进一步进行了封装，向上层提供更易用的接口。
 
     在扩展模块中，可以通过调用 ``env.set_data_source`` 来替换默认的数据源。可参考 :class:`BaseDataSource`。
     """
@@ -510,8 +510,8 @@ class AbstractBroker(with_metaclass(abc.ABCMeta)):
     """
     券商接口。
 
-    RQAlpha 将产生的订单提交给此对象，此对象负责对订单进行撮合（不论是自行撮合还是委托给外部的真实交易所），
-    并通过 ``EVENT.ORDER_*`` 及 ``EVENT.TRADE`` 事件将撮合结果反馈进入 RQAlpha。
+    rqrobot 将产生的订单提交给此对象，此对象负责对订单进行撮合（不论是自行撮合还是委托给外部的真实交易所），
+    并通过 ``EVENT.ORDER_*`` 及 ``EVENT.TRADE`` 事件将撮合结果反馈进入 rqrobot。
 
     在扩展模块中，可以通过调用 ``env.set_broker`` 来替换默认的 Broker。
     """
@@ -536,7 +536,7 @@ class AbstractBroker(with_metaclass(abc.ABCMeta)):
         """
         [Required]
 
-        提交订单。在当前版本，RQAlpha 会生成 :class:`~Order` 对象，再通过此接口提交到 Broker。
+        提交订单。在当前版本，rqrobot 会生成 :class:`~Order` 对象，再通过此接口提交到 Broker。
         TBD: 由 Broker 对象生成 Order 并返回？
         """
         raise NotImplementedError
@@ -572,7 +572,7 @@ class AbstractMod(with_metaclass(abc.ABCMeta)):
     @abc.abstractmethod
     def start_up(self, env, mod_config):
         """
-        RQAlpha 在系统启动时会调用此接口；在此接口中，可以通过调用 ``env`` 的相应方法来覆盖系统默认组件。
+        rqrobot 在系统启动时会调用此接口；在此接口中，可以通过调用 ``env`` 的相应方法来覆盖系统默认组件。
 
         :param env: 系统环境
         :type env: :class:`~Environment`
@@ -582,10 +582,10 @@ class AbstractMod(with_metaclass(abc.ABCMeta)):
 
     def tear_down(self, code, exception=None):
         """
-        RQAlpha 在系统退出前会调用此接口。
+        rqrobot 在系统退出前会调用此接口。
 
         :param code: 退出代码
-        :type code: rqalpha.const.EXIT_CODE
+        :type code: rqrobot.const.EXIT_CODE
         :param exception: 如果在策略执行过程中出现错误，此对象为相应的异常对象
         """
         raise NotImplementedError

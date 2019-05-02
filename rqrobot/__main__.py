@@ -22,8 +22,8 @@ import six
 import click
 from importlib import import_module
 
-from rqalpha.utils.click_helper import Date
-from rqalpha.utils.config import parse_config, dump_config
+from rqrobot.utils.click_helper import Date
+from rqrobot.utils.config import parse_config, dump_config
 
 CONTEXT_SETTINGS = {
     'default_map': {
@@ -42,22 +42,22 @@ def cli(ctx, verbose):
 
 
 def inject_mod_commands():
-    from rqalpha.utils.config import get_mod_conf
-    from rqalpha.mod import SYSTEM_MOD_LIST
-    from rqalpha.utils.package_helper import import_mod
+    from rqrobot.utils.config import get_mod_conf
+    from rqrobot.mod import SYSTEM_MOD_LIST
+    from rqrobot.utils.package_helper import import_mod
     mod_config = get_mod_conf()
 
     for mod_name, config in six.iteritems(mod_config['mod']):
         if 'lib' in config:
             lib_name = config["lib"]
         else:
-            lib_name = "rqalpha_mod_{}".format(mod_name)
+            lib_name = "rqrobot_mod_{}".format(mod_name)
         if not config['enabled']:
             continue
         try:
             if mod_name in SYSTEM_MOD_LIST:
                 # inject system mod
-                import_mod("rqalpha.mod." + lib_name)
+                import_mod("rqrobot.mod." + lib_name)
             else:
                 # inject third part mod
                 import_mod(lib_name)
@@ -72,13 +72,13 @@ def entry_point():
 
 
 @cli.command()
-@click.option('-d', '--data-bundle-path', default=os.path.expanduser('~/.rqalpha'), type=click.Path(file_okay=False))
+@click.option('-d', '--data-bundle-path', default=os.path.expanduser('~/.rqrobot'), type=click.Path(file_okay=False))
 @click.option('--locale', 'locale', type=click.STRING, default="zh_Hans_CN")
 def update_bundle(data_bundle_path, locale):
     """
     Sync Data Bundle
     """
-    from rqalpha import main
+    from rqrobot import main
     main.update_bundle(data_bundle_path, locale)
 
 
@@ -121,17 +121,17 @@ def run(**kwargs):
     if not kwargs.get('base__securities', None):
         kwargs.pop('base__securities', None)
 
-    from rqalpha import main
+    from rqrobot import main
     source_code = kwargs.get("base__source_code")
     cfg = parse_config(kwargs, config_path=config_path, click_type=True, source_code=source_code)
     source_code = cfg.base.source_code
     results = main.run(cfg, source_code=source_code)
 
     # store results into ipython when running in ipython
-    from rqalpha.utils import is_run_from_ipython
+    from rqrobot.utils import is_run_from_ipython
     if results is not None and is_run_from_ipython():
         import IPython
-        from rqalpha.utils import RqAttrDict
+        from rqrobot.utils import RqAttrDict
         ipy = IPython.get_ipython()
         report = results.get("sys_analyser", {})
         ipy.user_global_ns["results"] = results
@@ -162,7 +162,7 @@ def version(**kwargs):
     """
     Output Version Info
     """
-    from rqalpha import version_info
+    from rqrobot import version_info
     six.print_("Current Version: ", version_info)
 
 
@@ -190,11 +190,11 @@ def mod(cmd, params):
     """
     Mod management command
 
-    rqalpha mod list \n
-    rqalpha mod install xxx \n
-    rqalpha mod uninstall xxx \n
-    rqalpha mod enable xxx \n
-    rqalpha mod disable xxx \n
+    rqrobot mod list \n
+    rqrobot mod install xxx \n
+    rqrobot mod uninstall xxx \n
+    rqrobot mod enable xxx \n
+    rqrobot mod disable xxx \n
 
     """
     def list(params):
@@ -202,7 +202,7 @@ def mod(cmd, params):
         List all mod configuration
         """
         from tabulate import tabulate
-        from rqalpha.utils.config import get_mod_conf
+        from rqrobot.utils.config import get_mod_conf
 
         mod_config = get_mod_conf()
         table = []
@@ -219,7 +219,7 @@ def mod(cmd, params):
         ]
 
         six.print_(tabulate(table, headers=headers, tablefmt="psql"))
-        six.print_("You can use `rqalpha mod list/install/uninstall/enable/disable` to manage your mods")
+        six.print_("You can use `rqrobot mod list/install/uninstall/enable/disable` to manage your mods")
 
     def install(params):
         """
@@ -241,20 +241,20 @@ def mod(cmd, params):
 
         for mod_name in mod_list:
             mod_name_index = params.index(mod_name)
-            if mod_name.startswith("rqalpha_mod_sys_"):
+            if mod_name.startswith("rqrobot_mod_sys_"):
                 six.print_('System Mod can not be installed or uninstalled')
                 return
-            if "rqalpha_mod_" in mod_name:
+            if "rqrobot_mod_" in mod_name:
                 lib_name = mod_name
             else:
-                lib_name = "rqalpha_mod_" + mod_name
+                lib_name = "rqrobot_mod_" + mod_name
             params[mod_name_index] = lib_name
 
         # Install Mod
         installed_result = pip_main(params)
 
         # Export config
-        from rqalpha.utils.config import load_yaml, user_mod_conf_path
+        from rqrobot.utils.config import load_yaml, user_mod_conf_path
         user_conf = load_yaml(user_mod_conf_path()) if os.path.exists(user_mod_conf_path()) else {'mod': {}}
 
         if installed_result == 0:
@@ -262,19 +262,19 @@ def mod(cmd, params):
             if len(mod_list) == 0:
                 """
                 主要是方便 `pip install -e .` 这种方式 本地调试 Mod 使用，需要满足以下条件:
-                1.  `rqalpha mod install -e .` 命令是在对应 自定义 Mod 的根目录下
+                1.  `rqrobot mod install -e .` 命令是在对应 自定义 Mod 的根目录下
                 2.  该 Mod 必须包含 `setup.py` 文件（否则也不能正常的 `pip install -e .` 来安装）
-                3.  该 Mod 包名必须按照 RQAlpha 的规范来命名，具体规则如下
-                    *   必须以 `rqalpha-mod-` 来开头，比如 `rqalpha-mod-xxx-yyy`
-                    *   对应import的库名必须要 `rqalpha_mod_` 来开头，并且需要和包名后半部分一致，但是 `-` 需要替换为 `_`, 比如 `rqalpha_mod_xxx_yyy`
+                3.  该 Mod 包名必须按照 rqrobot 的规范来命名，具体规则如下
+                    *   必须以 `rqrobot-mod-` 来开头，比如 `rqrobot-mod-xxx-yyy`
+                    *   对应import的库名必须要 `rqrobot_mod_` 来开头，并且需要和包名后半部分一致，但是 `-` 需要替换为 `_`, 比如 `rqrobot_mod_xxx_yyy`
                 """
                 mod_name = _detect_package_name_from_dir()
-                mod_name = mod_name.replace("-", "_").replace("rqalpha_mod_", "")
+                mod_name = mod_name.replace("-", "_").replace("rqrobot_mod_", "")
                 mod_list.append(mod_name)
 
             for mod_name in mod_list:
-                if "rqalpha_mod_" in mod_name:
-                    mod_name = mod_name.replace("rqalpha_mod_", "")
+                if "rqrobot_mod_" in mod_name:
+                    mod_name = mod_name.replace("rqrobot_mod_", "")
                 if "==" in mod_name:
                     mod_name = mod_name.split('==')[0]
                 user_conf['mod'][mod_name] = {}
@@ -305,24 +305,24 @@ def mod(cmd, params):
 
         for mod_name in mod_list:
             mod_name_index = params.index(mod_name)
-            if mod_name.startswith("rqalpha_mod_sys_"):
+            if mod_name.startswith("rqrobot_mod_sys_"):
                 six.print_('System Mod can not be installed or uninstalled')
                 return
-            if "rqalpha_mod_" in mod_name:
+            if "rqrobot_mod_" in mod_name:
                 lib_name = mod_name
             else:
-                lib_name = "rqalpha_mod_" + mod_name
+                lib_name = "rqrobot_mod_" + mod_name
             params[mod_name_index] = lib_name
 
         # Uninstall Mod
         uninstalled_result = pip_main(params)
         # Remove Mod Config
-        from rqalpha.utils.config import user_mod_conf_path, load_yaml
+        from rqrobot.utils.config import user_mod_conf_path, load_yaml
         user_conf = load_yaml(user_mod_conf_path()) if os.path.exists(user_mod_conf_path()) else {'mod': {}}
 
         for mod_name in mod_list:
-            if "rqalpha_mod_" in mod_name:
-                mod_name = mod_name.replace("rqalpha_mod_", "")
+            if "rqrobot_mod_" in mod_name:
+                mod_name = mod_name.replace("rqrobot_mod_", "")
 
             del user_conf['mod'][mod_name]
 
@@ -334,13 +334,13 @@ def mod(cmd, params):
         enable mod
         """
         mod_name = params[0]
-        if "rqalpha_mod_" in mod_name:
-            mod_name = mod_name.replace("rqalpha_mod_", "")
+        if "rqrobot_mod_" in mod_name:
+            mod_name = mod_name.replace("rqrobot_mod_", "")
 
         # check whether is installed
-        module_name = "rqalpha_mod_" + mod_name
-        if module_name.startswith("rqalpha_mod_sys_"):
-            module_name = "rqalpha.mod." + module_name
+        module_name = "rqrobot_mod_" + mod_name
+        if module_name.startswith("rqrobot_mod_sys_"):
+            module_name = "rqrobot.mod." + module_name
         try:
             import_module(module_name)
         except ImportError:
@@ -348,7 +348,7 @@ def mod(cmd, params):
             if installed_result != 0:
                 return
 
-        from rqalpha.utils.config import user_mod_conf_path, load_yaml
+        from rqrobot.utils.config import user_mod_conf_path, load_yaml
         user_conf = load_yaml(user_mod_conf_path()) if os.path.exists(user_mod_conf_path()) else {'mod': {}}
 
         try:
@@ -364,10 +364,10 @@ def mod(cmd, params):
         """
         mod_name = params[0]
 
-        if "rqalpha_mod_" in mod_name:
-            mod_name = mod_name.replace("rqalpha_mod_", "")
+        if "rqrobot_mod_" in mod_name:
+            mod_name = mod_name.replace("rqrobot_mod_", "")
 
-        from rqalpha.utils.config import user_mod_conf_path, load_yaml
+        from rqrobot.utils.config import user_mod_conf_path, load_yaml
         user_conf = load_yaml(user_mod_conf_path()) if os.path.exists(user_mod_conf_path()) else {'mod': {}}
 
         try:

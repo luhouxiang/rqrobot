@@ -2,11 +2,11 @@ import os
 import pickle
 from datetime import datetime
 
-from rqalpha.utils.testing import RQAlphaTestCase, DataProxyFixture, UniverseFixture
-from rqalpha.mod.rqalpha_mod_sys_simulation.testing import SimulationEventSourceFixture
+from rqrobot.utils.testing import rqrobotTestCase, DataProxyFixture, UniverseFixture
+from rqrobot.mod.rqrobot_mod_sys_simulation.testing import SimulationEventSourceFixture
 
 
-class SimulationEventSourceTestCase(UniverseFixture, SimulationEventSourceFixture, DataProxyFixture, RQAlphaTestCase):
+class SimulationEventSourceTestCase(UniverseFixture, SimulationEventSourceFixture, DataProxyFixture, rqrobotTestCase):
     def __init__(self, *args, **kwargs):
         super(SimulationEventSourceTestCase, self).__init__(*args, **kwargs)
         self._ticks = None
@@ -36,7 +36,7 @@ class SimulationEventSourceTestCase(UniverseFixture, SimulationEventSourceFixtur
         self.assertObj(e, **kwargs)
 
     def test_tick_events(self):
-        from rqalpha.events import EVENT
+        from rqrobot.events import EVENT
 
         with self.mock_data_proxy_method("get_merge_ticks", self._mock_get_merge_ticks):
             events = self.simulation_event_source.events(datetime(2018, 9, 14), datetime(2018, 9, 14), "tick")

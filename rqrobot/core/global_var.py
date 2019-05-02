@@ -16,7 +16,7 @@
 
 import six
 import pickle
-from rqalpha.utils.logger import user_system_log, system_log, user_detail_log
+from rqrobot.utils.logger import user_system_log, system_log, user_detail_log
 
 
 class GlobalVars(object):

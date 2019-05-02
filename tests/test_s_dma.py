@@ -1,5 +1,5 @@
-# rqalpha run -f rqalpha/examples/technical_analysis/ama.py -sc 100000 -p -bm 000300.XSHG -mc funcat_api.enabled True
-from rqalpha.api import *
+# rqrobot run -f rqrobot/examples/technical_analysis/ama.py -sc 100000 -p -bm 000300.XSHG -mc funcat_api.enabled True
+from rqrobot.api import *
 
 
 def init(context):

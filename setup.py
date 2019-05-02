@@ -31,17 +31,12 @@ def update_requirements(from_reqs, to_reqs):
     return from_req_dict.values()
 
 
-with open(join(dirname(__file__), 'rqalpha/VERSION.txt'), 'rb') as f:
+with open(join(dirname(__file__), 'rqrobot/VERSION.txt'), 'rb') as f:
     version = f.read().decode('ascii').strip()
 
 requirements = parse_requirements("requirements.txt", session=False)
 
 python_version = platform.python_version()
-if python_version.startswith("2"):
-    requirements = update_requirements(requirements, parse_requirements("requirements-py2.txt", session=False))
-elif python_version.startswith("3.4"):
-    requirements = update_requirements(requirements, parse_requirements("requirements-py34.txt", session=False))
-
 req_strs = [str(ir.req) for ir in requirements]
 
 
@@ -66,8 +61,6 @@ setup(
         'Programming Language :: Python',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: Unix',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],

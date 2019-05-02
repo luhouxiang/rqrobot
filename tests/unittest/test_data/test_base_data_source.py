@@ -1,7 +1,7 @@
-from rqalpha.utils.testing import BaseDataSourceFixture, RQAlphaTestCase, mock_instrument
+from rqrobot.utils.testing import BaseDataSourceFixture, rqrobotTestCase, mock_instrument
 
 
-class BaseDataSourceTestCase(BaseDataSourceFixture, RQAlphaTestCase):
+class BaseDataSourceTestCase(BaseDataSourceFixture, rqrobotTestCase):
     def test_get_tick_size(self):
         self.assertEqual(self.base_data_source.get_tick_size(mock_instrument(exchange="XSHE")), 0.01)
         self.assertEqual(self.base_data_source.get_tick_size(mock_instrument(_type="FenjiA")), 0.001)

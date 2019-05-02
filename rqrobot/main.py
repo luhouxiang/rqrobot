@@ -29,31 +29,31 @@ import pytz
 import requests
 import six
 
-from rqalpha import const
-from rqalpha.api import helper as api_helper
-from rqalpha.core.strategy_loader import FileStrategyLoader, SourceCodeStrategyLoader, UserFuncStrategyLoader
-from rqalpha.core.strategy import Strategy
-from rqalpha.core.strategy_universe import StrategyUniverse
-from rqalpha.core.global_var import GlobalVars
-from rqalpha.core.strategy_context import StrategyContext
-from rqalpha.data.base_data_source import BaseDataSource
-from rqalpha.data.data_proxy import DataProxy
-from rqalpha.environment import Environment
-from rqalpha.events import EVENT, Event
-from rqalpha.execution_context import ExecutionContext
-from rqalpha.interface import Persistable
-from rqalpha.mod import ModHandler
-from rqalpha.model.bar import BarMap
-from rqalpha.model.portfolio import Portfolio
-from rqalpha.model.base_position import Positions
-from rqalpha.const import RUN_TYPE
-from rqalpha.utils import create_custom_exception, run_with_user_log_disabled, scheduler as mod_scheduler
-from rqalpha.utils.exception import CustomException, is_user_exc, patch_user_exc
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils.persisit_helper import CoreObjectsPersistProxy, PersistHelper
-from rqalpha.utils.scheduler import Scheduler
-from rqalpha.utils.config import set_locale
-from rqalpha.utils.logger import system_log, basic_system_log, user_system_log, user_detail_log
+from rqrobot import const
+from rqrobot.api import helper as api_helper
+from rqrobot.core.strategy_loader import FileStrategyLoader, SourceCodeStrategyLoader, UserFuncStrategyLoader
+from rqrobot.core.strategy import Strategy
+from rqrobot.core.strategy_universe import StrategyUniverse
+from rqrobot.core.global_var import GlobalVars
+from rqrobot.core.strategy_context import StrategyContext
+from rqrobot.data.base_data_source import BaseDataSource
+from rqrobot.data.data_proxy import DataProxy
+from rqrobot.environment import Environment
+from rqrobot.events import EVENT, Event
+from rqrobot.execution_context import ExecutionContext
+from rqrobot.interface import Persistable
+from rqrobot.mod import ModHandler
+from rqrobot.model.bar import BarMap
+from rqrobot.model.portfolio import Portfolio
+from rqrobot.model.base_position import Positions
+from rqrobot.const import RUN_TYPE
+from rqrobot.utils import create_custom_exception, run_with_user_log_disabled, scheduler as mod_scheduler
+from rqrobot.utils.exception import CustomException, is_user_exc, patch_user_exc
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils.persisit_helper import CoreObjectsPersistProxy, PersistHelper
+from rqrobot.utils.scheduler import Scheduler
+from rqrobot.utils.config import set_locale
+from rqrobot.utils.logger import system_log, basic_system_log, user_system_log, user_detail_log
 
 
 jsonpickle_numpy.register_handlers()
@@ -122,7 +122,7 @@ def create_benchmark_portfolio(env):
 
 
 def create_base_scope(copy_scope=False):
-    from rqalpha.utils.logger import user_print, user_log
+    from rqrobot.utils.logger import user_print, user_log
     from . import user_module
 
     if copy_scope:
@@ -140,7 +140,7 @@ def create_base_scope(copy_scope=False):
 
 def update_bundle(data_bundle_path=None, locale="zh_Hans_CN", confirm=True):
     set_locale(locale)
-    default_bundle_path = os.path.abspath(os.path.expanduser('~/.rqalpha/bundle'))
+    default_bundle_path = os.path.abspath(os.path.expanduser('~/.rqrobot/bundle'))
     if data_bundle_path is None:
         data_bundle_path = default_bundle_path
     else:
@@ -368,7 +368,7 @@ def enable_profiler(env, scope):
     env.profile_deco = profile_deco = line_profiler.LineProfiler()
     for name in scope:
         obj = scope[name]
-        if getattr(obj, "__module__", None) != "rqalpha.user_module":
+        if getattr(obj, "__module__", None) != "rqrobot.user_module":
             continue
         if inspect.isfunction(obj):
             scope[name] = profile_deco(obj)
@@ -388,9 +388,9 @@ def output_profile_result(env):
 
 
 def set_loggers(config):
-    from rqalpha.utils.logger import user_log, user_system_log, user_detail_log, system_log, basic_system_log, std_log
-    from rqalpha.utils.logger import user_std_handler, init_logger
-    from rqalpha.utils import logger
+    from rqrobot.utils.logger import user_log, user_system_log, user_detail_log, system_log, basic_system_log, std_log
+    from rqrobot.utils.logger import user_std_handler, init_logger
+    from rqrobot.utils import logger
     extra_config = config.extra
 
     init_logger()

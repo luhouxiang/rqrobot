@@ -18,11 +18,11 @@ import six
 import jsonpickle
 import numpy as np
 
-from rqalpha.environment import Environment
-from rqalpha.const import DAYS_CNT, DEFAULT_ACCOUNT_TYPE
-from rqalpha.utils import get_account_type, merge_dicts
-from rqalpha.utils.repr import property_repr
-from rqalpha.events import EVENT
+from rqrobot.environment import Environment
+from rqrobot.const import DAYS_CNT, DEFAULT_ACCOUNT_TYPE
+from rqrobot.utils import get_account_type, merge_dicts
+from rqrobot.utils.repr import property_repr
+from rqrobot.events import EVENT
 
 
 class Portfolio(object):

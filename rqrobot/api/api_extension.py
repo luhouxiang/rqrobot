@@ -16,11 +16,11 @@
 
 import six
 
-from rqalpha.api.api_base import decorate_api_exc, instruments, cal_style
-from rqalpha.environment import Environment
-from rqalpha.utils.arg_checker import apply_rules, verify_that
+from rqrobot.api.api_base import decorate_api_exc, instruments, cal_style
+from rqrobot.environment import Environment
+from rqrobot.utils.arg_checker import apply_rules, verify_that
 # noinspection PyUnresolvedReferences
-from rqalpha.model.order import LimitOrder, MarketOrder, Order
+from rqrobot.model.order import LimitOrder, MarketOrder, Order
 
 __all__ = [
     'order',

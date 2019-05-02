@@ -18,9 +18,9 @@ import time
 
 import numpy as np
 
-from rqalpha.utils import id_gen
-from rqalpha.utils.repr import property_repr, properties
-from rqalpha.environment import Environment
+from rqrobot.utils import id_gen
+from rqrobot.utils.repr import property_repr, properties
+from rqrobot.environment import Environment
 
 
 class Trade(object):

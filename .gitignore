@@ -4,7 +4,7 @@ dist/
 .idea
 __pycache__
 algoengine.iml
-rqalpha.system.log
+rqrobot.system.log
 *.bcolz
 *.pk
 *.h5
@@ -18,5 +18,5 @@ bundle
 persist/
 .coverage
 .tox
-rqalpha_test_coverage_report/
+rqrobot_test_coverage_report/
 .tmp.pkl

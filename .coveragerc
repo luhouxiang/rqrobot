@@ -1,9 +1,9 @@
 [html]
-directory = rqalpha_test_coverage_report
-title = rqalpha_coverage_report
+directory = rqrobot_test_coverage_report
+title = rqrobot_coverage_report
 
 [run]
-source = rqalpha
+source = rqrobot
 
 [report]
 omit = */examples/*

@@ -17,7 +17,7 @@ from bisect import bisect_right
 
 import numpy as np
 
-from rqalpha.utils.datetime_func import convert_date_to_int
+from rqrobot.utils.datetime_func import convert_date_to_int
 
 
 PRICE_FIELDS = {

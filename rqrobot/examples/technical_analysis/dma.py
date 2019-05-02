@@ -1,5 +1,5 @@
-# Run `rqalpha mod enable sys_funcat` first.
-from rqalpha.api import *
+# Run `rqrobot mod enable sys_funcat` first.
+from rqrobot.api import *
 
 
 def init(context):

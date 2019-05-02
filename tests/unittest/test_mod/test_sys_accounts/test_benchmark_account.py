@@ -1,8 +1,8 @@
-from rqalpha.utils.testing import RQAlphaTestCase, mock_instrument, mock_bar, mock_tick
-from rqalpha.mod.rqalpha_mod_sys_accounts.testing import BenchmarkAccountFixture
+from rqrobot.utils.testing import rqrobotTestCase, mock_instrument, mock_bar, mock_tick
+from rqrobot.mod.rqrobot_mod_sys_accounts.testing import BenchmarkAccountFixture
 
 
-class ModSysAccountsBenchmarkAccountTestCase(BenchmarkAccountFixture, RQAlphaTestCase):
+class ModSysAccountsBenchmarkAccountTestCase(BenchmarkAccountFixture, rqrobotTestCase):
     def __init__(self, *args, **kwargs):
         super(ModSysAccountsBenchmarkAccountTestCase, self).__init__(*args, **kwargs)
         self.benchmark = "000300,XSHG"
@@ -13,7 +13,7 @@ class ModSysAccountsBenchmarkAccountTestCase(BenchmarkAccountFixture, RQAlphaTes
         }
 
     def test_on_bar(self):
-        from rqalpha.events import EVENT, Event
+        from rqrobot.events import EVENT, Event
 
         self.assertEqual(self.benchmark_account.total_value, self.benchmark_account_total_cash)
         self.assertEqual(len(self.benchmark_account.positions), 0)
@@ -31,7 +31,7 @@ class ModSysAccountsBenchmarkAccountTestCase(BenchmarkAccountFixture, RQAlphaTes
         self.assertAlmostEqual(self.benchmark_account.positions[self.benchmark].quantity, 4000 / 3000)
 
     def test_on_tick(self):
-        from rqalpha.events import EVENT, Event
+        from rqrobot.events import EVENT, Event
 
         self.assertEqual(self.benchmark_account.total_value, self.benchmark_account_total_cash)
         self.assertEqual(len(self.benchmark_account.positions), 0)

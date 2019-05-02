@@ -5,7 +5,7 @@ import six
 from .mocking import mock_instrument, mock_bar, mock_tick
 from .fixtures import (
     MagicMock,
-    RQAlphaFixture,
+    rqrobotFixture,
     EnvironmentFixture,
     UniverseFixture,
     DataProxyFixture,
@@ -16,7 +16,7 @@ from .fixtures import (
 )
 
 
-class RQAlphaTestCase(TestCase):
+class rqrobotTestCase(TestCase):
     def init_fixture(self):
         pass
 
@@ -33,8 +33,8 @@ class RQAlphaTestCase(TestCase):
 
 __all__ = [
     "MagicMock",
-    "RQAlphaFixture",
-    "RQAlphaTestCase",
+    "rqrobotFixture",
+    "rqrobotTestCase",
     "EnvironmentFixture",
     "UniverseFixture",
     "DataProxyFixture",

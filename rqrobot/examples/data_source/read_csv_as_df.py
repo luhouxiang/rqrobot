@@ -1,4 +1,4 @@
-from rqalpha.api import *
+from rqrobot.api import *
 
 
 def read_csv_as_df(csv_path):

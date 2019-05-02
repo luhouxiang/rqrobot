@@ -11,20 +11,20 @@ else:
 
 
 
-class RQAlphaFixture(object):
+class rqrobotFixture(object):
     def init_fixture(self):
         pass
 
 
-class EnvironmentFixture(RQAlphaFixture):
+class EnvironmentFixture(rqrobotFixture):
     def __init__(self, *args, **kwargs):
         super(EnvironmentFixture, self).__init__(*args, **kwargs)
         self.env_config = {}
         self.env = None
 
     def init_fixture(self):
-        from rqalpha.utils import RqAttrDict
-        from rqalpha.environment import Environment
+        from rqrobot.utils import RqAttrDict
+        from rqrobot.environment import Environment
 
         super(EnvironmentFixture, self).init_fixture()
         self.env = Environment(RqAttrDict(self.env_config))
@@ -46,13 +46,13 @@ class EnvironmentFixture(RQAlphaFixture):
 
 class UniverseFixture(EnvironmentFixture):
     def init_fixture(self):
-        from rqalpha.core.strategy_universe import StrategyUniverse
+        from rqrobot.core.strategy_universe import StrategyUniverse
 
         super(UniverseFixture, self).init_fixture()
         self.env._universe = StrategyUniverse()
 
 
-class TempDirFixture(RQAlphaFixture):
+class TempDirFixture(rqrobotFixture):
     def __init__(self, *args, **kwargs):
         super(TempDirFixture, self).__init__(*args, **kwargs)
         self.temp_dir = None
@@ -72,7 +72,7 @@ class BaseDataSourceFixture(TempDirFixture, EnvironmentFixture):
     def __init__(self, *args, **kwargs):
         super(BaseDataSourceFixture, self).__init__(*args, **kwargs)
 
-        from rqalpha.const import MARKET
+        from rqrobot.const import MARKET
 
         self.env_config = {
             "base": {
@@ -88,10 +88,10 @@ class BaseDataSourceFixture(TempDirFixture, EnvironmentFixture):
         self.base_data_source = None
 
     def init_fixture(self):
-        from rqalpha.data.base_data_source import BaseDataSource
+        from rqrobot.data.base_data_source import BaseDataSource
 
         super(BaseDataSourceFixture, self).init_fixture()
-        default_bundle_path = os.path.abspath(os.path.expanduser('~/.rqalpha/bundle'))
+        default_bundle_path = os.path.abspath(os.path.expanduser('~/.rqrobot/bundle'))
 
         for key, table in six.iteritems(self.bcolz_data):
             table_relative_path = "{}.bcolz".format(key)
@@ -125,7 +125,7 @@ class DataProxyFixture(BaseDataSourceFixture):
         self.data_source = None
 
     def init_fixture(self):
-        from rqalpha.data.data_proxy import DataProxy
+        from rqrobot.data.data_proxy import DataProxy
 
         super(DataProxyFixture, self).init_fixture()
         if not self.data_source:
@@ -146,7 +146,7 @@ class BarDictPriceBoardFixture(EnvironmentFixture):
         self.price_board = None
 
     def init_fixture(self):
-        from rqalpha.core.bar_dict_price_board import BarDictPriceBoard
+        from rqrobot.core.bar_dict_price_board import BarDictPriceBoard
 
         super(BarDictPriceBoardFixture, self).init_fixture()
 
@@ -158,8 +158,8 @@ class MatcherFixture(EnvironmentFixture):
     def __init__(self, *args, **kwargs):
         super(MatcherFixture, self).__init__(*args, **kwargs)
 
-        from rqalpha.mod.rqalpha_mod_sys_simulation import __config__ as mod_sys_simulation_config
-        from rqalpha.const import MATCHING_TYPE
+        from rqrobot.mod.rqrobot_mod_sys_simulation import __config__ as mod_sys_simulation_config
+        from rqrobot.const import MATCHING_TYPE
 
         self.env_config = {
             "mod": {
@@ -173,7 +173,7 @@ class MatcherFixture(EnvironmentFixture):
 
     def init_fixture(self):
         from datetime import datetime
-        from rqalpha.mod.rqalpha_mod_sys_simulation.matcher import Matcher
+        from rqrobot.mod.rqrobot_mod_sys_simulation.matcher import Matcher
         
         super(MatcherFixture, self).init_fixture()
 
@@ -187,15 +187,15 @@ class BookingFixture(EnvironmentFixture):
     def __init__(self, *args, **kwargs):
         super(BookingFixture, self).__init__(*args, **kwargs)
 
-        from rqalpha.model.booking import BookingPositions
-        from rqalpha.const import POSITION_DIRECTION
+        from rqrobot.model.booking import BookingPositions
+        from rqrobot.const import POSITION_DIRECTION
 
         self.long_positions = BookingPositions(POSITION_DIRECTION.LONG)
         self.short_positions = BookingPositions(POSITION_DIRECTION.SHORT)
         self.booking = None
 
     def init_fixture(self):
-        from rqalpha.model.booking import Booking
+        from rqrobot.model.booking import Booking
         
         super(BookingFixture, self).init_fixture()
         

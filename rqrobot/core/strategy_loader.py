@@ -16,8 +16,8 @@
 
 import codecs
 
-from rqalpha.interface import AbstractStrategyLoader
-from rqalpha.utils.strategy_loader_help import compile_strategy
+from rqrobot.interface import AbstractStrategyLoader
+from rqrobot.utils.strategy_loader_help import compile_strategy
 
 
 class FileStrategyLoader(AbstractStrategyLoader):

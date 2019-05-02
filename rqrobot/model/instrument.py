@@ -19,9 +19,9 @@ import datetime
 import six
 import numpy as np
 
-from rqalpha.environment import Environment
-from rqalpha.utils import instrument_type_str2enum
-from rqalpha.utils.repr import property_repr
+from rqrobot.environment import Environment
+from rqrobot.utils import instrument_type_str2enum
+from rqrobot.utils.repr import property_repr
 
 
 class Instrument(object):

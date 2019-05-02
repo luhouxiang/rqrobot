@@ -19,12 +19,12 @@ import json
 
 from dateutil.parser import parse
 
-from rqalpha.execution_context import ExecutionContext
-from rqalpha.environment import Environment
-from rqalpha.const import EXC_TYPE, EXECUTION_PHASE
-from rqalpha.events import EVENT
-from rqalpha.utils.py2 import signature
-from rqalpha.utils.exception import patch_user_exc, ModifyExceptionFromType
+from rqrobot.execution_context import ExecutionContext
+from rqrobot.environment import Environment
+from rqrobot.const import EXC_TYPE, EXECUTION_PHASE
+from rqrobot.events import EVENT
+from rqrobot.utils.py2 import signature
+from rqrobot.utils.exception import patch_user_exc, ModifyExceptionFromType
 
 
 def market_close(hour=0, minute=0):

@@ -6,44 +6,44 @@
 
 .. _Ricequant: https://www.ricequant.com/algorithms
 .. _Ricequant 社区: https://www.ricequant.com/community
-.. _RQAlpha 文档: http://rqalpha.io
+.. _rqrobot 文档: http://rqrobot.io
 .. _Ricequant 文档: https://www.ricequant.com/api/python/chn
 
 
-RQAlpha 从数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析，为程序化交易者提供了全套解决方案。
+rqrobot 从数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析，为程序化交易者提供了全套解决方案。
 
-RQAlpha 具有灵活的配置方式，强大的扩展性，用户可以非常容易地定制专属于自己的程序化交易系统。
+rqrobot 具有灵活的配置方式，强大的扩展性，用户可以非常容易地定制专属于自己的程序化交易系统。
 
 特点
 ============================
 
 ======================    =================================================================================
 易于使用                    让您集中于策略的开发，一行简单的命令就可以执行您的策略。
-完善的文档                   您可以直接访问 `RQAlpha 文档`_ 或者 `Ricequant 文档`_ 来获取您需要的信息。
-活跃的社区                   您可以通过访问 `Ricequant 社区`_ 获取和询问有关 RQAlpha 的一切问题，有很多优秀的童鞋会解答您的问题。
-稳定的环境                   每天都有会大量的算法交易在 Ricequant 上运行，无论是 RQAlpha，还是数据，我们能会做到问题秒处理，秒解决。
+完善的文档                   您可以直接访问 `rqrobot 文档`_ 或者 `Ricequant 文档`_ 来获取您需要的信息。
+活跃的社区                   您可以通过访问 `Ricequant 社区`_ 获取和询问有关 rqrobot 的一切问题，有很多优秀的童鞋会解答您的问题。
+稳定的环境                   每天都有会大量的算法交易在 Ricequant 上运行，无论是 rqrobot，还是数据，我们能会做到问题秒处理，秒解决。
 灵活的配置                   您可以使用多种方式来配置和运行策略，只需简单的配置就可以构建适合自己的交易系统。
 强大的扩展性                 开发者可以基于我们提供的 Mod Hook 接口来进行扩展。
 ======================    =================================================================================
 
 .. warning::
 
-    RQAlpha 本身支持不同周期的回测和实盘交易，但是目前只免费开放A股市场日线数据，如果用户需要做分钟回测或者更细级别的回测可以在 `Ricequant`_ 上进行，也通过实现数据层接口函数来使用自己的数据。自有数据源对接请参考 :ref:`development-event-source`
+    rqrobot 本身支持不同周期的回测和实盘交易，但是目前只免费开放A股市场日线数据，如果用户需要做分钟回测或者更细级别的回测可以在 `Ricequant`_ 上进行，也通过实现数据层接口函数来使用自己的数据。自有数据源对接请参考 :ref:`development-event-source`
 
-RQAlpha 安装
+rqrobot 安装
 ==================
 
 .. code-block:: bash
 
-    $ pip install rqalpha
+    $ pip install rqrobot
 
 .. note::
 
-    RQAlpha 依赖一些需要 GCC 编译的库，如果您安装遇到问题请访问 :ref:`intro-install` 来寻找详细的安装文档信息。
+    rqrobot 依赖一些需要 GCC 编译的库，如果您安装遇到问题请访问 :ref:`intro-install` 来寻找详细的安装文档信息。
 
     .. warning::
 
-        我们强烈建议您在虚拟环境下安装RQAlpha
+        我们强烈建议您在虚拟环境下安装rqrobot
 
         虚拟环境的安装，请参考 :ref:`intro-detail-install`
 
@@ -51,11 +51,11 @@ RQAlpha 安装
 数据获取
 ==================
 
-当 RQAlpha 安装完成后，可以通过如下命令获取我们提供的免费A股日线数据。获取数据的详细内容请参考 :ref:`intro-install-get-data`
+当 rqrobot 安装完成后，可以通过如下命令获取我们提供的免费A股日线数据。获取数据的详细内容请参考 :ref:`intro-install-get-data`
 
 .. code-block:: bash
 
-    $ rqalpha update-bundle
+    $ rqrobot update-bundle
 
 生成样例策略
 ==================
@@ -64,19 +64,19 @@ RQAlpha 安装
 
 .. code-block:: bash
 
-    $ rqalpha examples -d ./
+    $ rqrobot examples -d ./
 
 运行回测
 ==================
 
-运行 RQAlpha 需要传递一些参数，可以通过命令 `rqalpha help` 查看，或者查看文档 :ref:`intro-config` 来获取相关信息。
+运行 rqrobot 需要传递一些参数，可以通过命令 `rqrobot help` 查看，或者查看文档 :ref:`intro-config` 来获取相关信息。
 
 运行如下命令:
 
 .. code-block:: bash
 
     $ cd examples
-    $ rqalpha run -f rsi.py -s 2014-01-01 -e 2016-01-01 -o result.pkl --plot --progress --account stock 100000
+    $ rqrobot run -f rsi.py -s 2014-01-01 -e 2016-01-01 -o result.pkl --plot --progress --account stock 100000
 
 等待回测结束后，将显示您的收益率和Risk。
 
@@ -87,12 +87,12 @@ RQAlpha 安装
 
 .. code-block:: bash
 
-    $ rqalpha plot result.pkl
+    $ rqrobot plot result.pkl
 
 分析结果
 ==================
 
-RQAlpha可以输出一个 pickle 文件，里面为一个 dict 。keys 包括
+rqrobot可以输出一个 pickle 文件，里面为一个 dict 。keys 包括
 
 * summary               回测摘要
 * stock_portfolios      股票帐号的市值
@@ -142,7 +142,7 @@ RQAlpha可以输出一个 pickle 文件，里面为一个 dict 。keys 包括
     #  'slippage': 0,
     #  'sortino': 0.014,
     #  'start_date': datetime.date(2016, 1, 4),
-    #  'strategy_file': 'rqalpha/examples/simple_macd.py',
+    #  'strategy_file': 'rqrobot/examples/simple_macd.py',
     #  'strategy_name': 'simple_macd',
     #  'strategy_type': 'stock',
     #  'total_returns': 0.027,

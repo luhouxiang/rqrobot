@@ -14,13 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from rqalpha.environment import Environment
-from rqalpha.interface import AbstractBookingPosition
-from rqalpha.const import POSITION_DIRECTION, POSITION_EFFECT, SIDE
-from rqalpha.events import EVENT
-from rqalpha.utils.logger import user_system_log
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils.repr import property_repr
+from rqrobot.environment import Environment
+from rqrobot.interface import AbstractBookingPosition
+from rqrobot.const import POSITION_DIRECTION, POSITION_EFFECT, SIDE
+from rqrobot.events import EVENT
+from rqrobot.utils.logger import user_system_log
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils.repr import property_repr
 
 
 class Booking(object):

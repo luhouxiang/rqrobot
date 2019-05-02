@@ -1,4 +1,4 @@
-from rqalpha.api import *
+from rqrobot.api import *
 
 import talib
 

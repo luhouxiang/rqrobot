@@ -23,13 +23,13 @@ from functools import wraps
 
 from dateutil.parser import parse as parse_date
 
-from rqalpha.utils.exception import RQInvalidArgument, RQTypeError
-from rqalpha.model.instrument import Instrument
-from rqalpha.environment import Environment
-from rqalpha.const import INSTRUMENT_TYPE, EXC_TYPE
-from rqalpha.utils import unwrapper, INST_TYPE_IN_STOCK_ACCOUNT
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils.exception import patch_system_exc, EXC_EXT_NAME
+from rqrobot.utils.exception import RQInvalidArgument, RQTypeError
+from rqrobot.model.instrument import Instrument
+from rqrobot.environment import Environment
+from rqrobot.const import INSTRUMENT_TYPE, EXC_TYPE
+from rqrobot.utils import unwrapper, INST_TYPE_IN_STOCK_ACCOUNT
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils.exception import patch_system_exc, EXC_EXT_NAME
 
 
 main_contract_warning_flag = True

@@ -9,7 +9,7 @@ Anaconda
 
 Anaconda 是一个用于科学计算的 Python 发行版，支持 Linux, Mac, Windows, 包含了众多流行的科学计算、数据分析的 Python 包。
 
-Anaconda 环境包含了常用的 Python 科学计算库及依赖关系，而 RQAlpha 有很多模块是依赖于这些科学计算库的，因此下载 Anaconda 可以轻松搭建出一个强大的 Python 量化研发的基础环境。
+Anaconda 环境包含了常用的 Python 科学计算库及依赖关系，而 rqrobot 有很多模块是依赖于这些科学计算库的，因此下载 Anaconda 可以轻松搭建出一个强大的 Python 量化研发的基础环境。
 
 .. note::
 
@@ -110,8 +110,8 @@ conda 虚拟环境
     # 创建 conda 虚拟环境（ :code:`env_name` 是您希望创建的虚拟环境名）
     $ conda create --name env_name python=3.5
 
-    # 如您想创建一个名为rqalpha的虚拟环境
-    $ conda create --name rqalpha python=3.5
+    # 如您想创建一个名为rqrobot的虚拟环境
+    $ conda create --name rqrobot python=3.5
 
     # 使用 conda 虚拟环境
     $ source activate env_name

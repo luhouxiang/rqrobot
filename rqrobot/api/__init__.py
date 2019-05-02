@@ -15,9 +15,9 @@
 # limitations under the License.
 
 
-from rqalpha.api.api_base import *
-from rqalpha.api.api_extension import *
+from rqrobot.api.api_base import *
+from rqrobot.api.api_extension import *
 # noinspection PyUnresolvedReferences
-from rqalpha.mod.rqalpha_mod_sys_accounts.api.api_stock import *
+from rqrobot.mod.rqrobot_mod_sys_accounts.api.api_stock import *
 # noinspection PyUnresolvedReferences
-from rqalpha.mod.rqalpha_mod_sys_accounts.api.api_future import *
+from rqrobot.mod.rqrobot_mod_sys_accounts.api.api_future import *

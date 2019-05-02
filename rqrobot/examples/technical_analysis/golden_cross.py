@@ -1,5 +1,5 @@
-# Run `rqalpha mod enable sys_funcat` first.
-from rqalpha.api import *
+# Run `rqrobot mod enable sys_funcat` first.
+from rqrobot.api import *
 
 
 # 在这个方法中编写任何的初始化逻辑。context对象将会在你的算法策略的任何方法之间做传递。

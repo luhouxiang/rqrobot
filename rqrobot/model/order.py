@@ -19,11 +19,11 @@ from decimal import Decimal
 
 import numpy as np
 
-from rqalpha.const import ORDER_STATUS, ORDER_TYPE, SIDE, POSITION_EFFECT
-from rqalpha.utils import id_gen, decimal_rounding_floor
-from rqalpha.utils.repr import property_repr, properties
-from rqalpha.utils.logger import user_system_log
-from rqalpha.environment import Environment
+from rqrobot.const import ORDER_STATUS, ORDER_TYPE, SIDE, POSITION_EFFECT
+from rqrobot.utils import id_gen, decimal_rounding_floor
+from rqrobot.utils.repr import property_repr, properties
+from rqrobot.utils.logger import user_system_log
+from rqrobot.environment import Environment
 
 
 class Order(object):

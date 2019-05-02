@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from rqalpha import run_file
+from rqrobot import run_file
 
 config = {
   "base": {

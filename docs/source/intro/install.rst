@@ -7,13 +7,13 @@
 安装前
 ==================
 
-..  image:: https://img.shields.io/pypi/pyversions/rqalpha.svg
-    :target: https://pypi.python.org/pypi/rqalpha
+..  image:: https://img.shields.io/pypi/pyversions/rqrobot.svg
+    :target: https://pypi.python.org/pypi/rqrobot
     :alt: Python Version Support
 
 .. note::
 
-    *   我们强烈建议您使用虚拟环境安装RQAlpha，以避免因为环境问题出现安装失败。虚拟环境的使用请参考：:ref:`intro-detail-create-env`
+    *   我们强烈建议您使用虚拟环境安装rqrobot，以避免因为环境问题出现安装失败。虚拟环境的使用请参考：:ref:`intro-detail-create-env`
     *   如果安装过程中遇到了问题，先阅读该文档下面的 「FAQ」 章节来尝试着解决
     *   如果执行 :code:`pip install` 安装依赖库网络速度比较慢的话，推荐使用 :code:`pip install -i https://pypi.tuna.tsinghua.edu.cn/simple` 国内镜像来加速
 
@@ -25,7 +25,7 @@
 
 *   安装 bcolz
 
-bcolz 是 RQAlpha 的依赖库，因为其编译时间较长，并且中间比较容易失败，建议先单独安装 bcolz 库，安装过程比较慢，请耐心等待。
+bcolz 是 rqrobot 的依赖库，因为其编译时间较长，并且中间比较容易失败，建议先单独安装 bcolz 库，安装过程比较慢，请耐心等待。
 
 .. code-block:: bash
 
@@ -55,13 +55,13 @@ bcolz 是 RQAlpha 的依赖库，因为其编译时间较长，并且中间比�
 
 .. code-block:: bash
 
-    $ pip install -i https://pypi.douban.com/simple rqalpha
+    $ pip install -i https://pypi.douban.com/simple rqrobot
 
-查看 RQAlpha 是否安装成功可以通过如下方式:
+查看 rqrobot 是否安装成功可以通过如下方式:
 
 .. code-block:: bash
 
-    $ rqalpha version
+    $ rqrobot version
 
 .. _intro-install-get-data:
 
@@ -76,33 +76,33 @@ RiceQuant 免费提供日级别的股票和期货数据供回测使用，可以�
 
 .. code-block:: bash
 
-    $ rqalpha update-bundle
+    $ rqrobot update-bundle
 
 
-bundle 默认存放在 :code:`~/.rqalpha` 下，您也可以指定 bundle 的存放位置，
+bundle 默认存放在 :code:`~/.rqrobot` 下，您也可以指定 bundle 的存放位置，
 
 .. code-block:: bash
 
-    $ rqalpha update-bundle -d target_bundle_path
+    $ rqrobot update-bundle -d target_bundle_path
 
 如果您使用了指定路径来存放 bundle，那么执行程序的时候也同样需要指定对应的 bundle 路径。
 
 .. code-block:: bash
 
-    $ rqalpha run -d target_bundle_path .....
+    $ rqrobot run -d target_bundle_path .....
 
 .. _intro-config:
 
 获取配置文件
 ==================
 
-如果运行 RQAlpha 时不指定配置文件，会在 :code:`~/.rqalpha/` 文件夹下创建 :code:`config.yml` 文件作为默认配置文件。
+如果运行 rqrobot 时不指定配置文件，会在 :code:`~/.rqrobot/` 文件夹下创建 :code:`config.yml` 文件作为默认配置文件。
 
 如果您想要直接获得一份配置文件，也可以通过如下命令来获得。
 
 .. code-block:: bash
 
-    $ rqalpha generate_config
+    $ rqrobot generate_config
 
 .. _intro-faq:
 
@@ -143,7 +143,7 @@ FAQ
 3.  Python 2.7 在 Windows 下产生中文乱码的问题
 ------------------------------------------------------
 
-RQAlpha 运行在 Windows(Python 2.x) 可能会遇到中文乱码的问题，这个并不是RQAlpha的问题，而是由于 Windows 的 cmd 本身是 `gbk` 编码而产生的，具体的解决方案可以参考 [Windows(Python 2.x) 命令行下输出日志中文乱码的问题](https://github.com/ricequant/rqalpha/issues/80)
+rqrobot 运行在 Windows(Python 2.x) 可能会遇到中文乱码的问题，这个并不是rqrobot的问题，而是由于 Windows 的 cmd 本身是 `gbk` 编码而产生的，具体的解决方案可以参考 [Windows(Python 2.x) 命令行下输出日志中文乱码的问题](https://github.com/ricequant/rqrobot/issues/80)
 
 .. _FAQ-update-bundle-mac:
 
@@ -206,8 +206,8 @@ Mac 下默认并没有安装很多命令，我们可以通过homebrew安装，�
 
 1.策略样例存储路径：
 
-执行 :code:`pip install rqalpha` 后虽然会默认保存examples到python环境中，但路径相对复杂，我们建议您将examples目录重新保存到您认为方便的地方。
+执行 :code:`pip install rqrobot` 后虽然会默认保存examples到python环境中，但路径相对复杂，我们建议您将examples目录重新保存到您认为方便的地方。
 
 2.数据存储的路径：
 
-如您没有指定路径，则会在您执行 :code:`rqalpha update-bundle` 的当前目录创建 :code:`/.rqalpha/bundle` 的文件夹.您可以在命令行内查看路径。
+如您没有指定路径，则会在您执行 :code:`rqrobot update-bundle` 的当前目录创建 :code:`/.rqrobot/bundle` 的文件夹.您可以在命令行内查看路径。

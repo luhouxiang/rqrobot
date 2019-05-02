@@ -17,10 +17,10 @@
 import copy
 from collections import OrderedDict
 
-from rqalpha.utils.package_helper import import_mod
-from rqalpha.utils.logger import system_log, basic_system_log
-from rqalpha.utils.i18n import gettext as _
-from rqalpha.utils import RqAttrDict
+from rqrobot.utils.package_helper import import_mod
+from rqrobot.utils.logger import system_log, basic_system_log
+from rqrobot.utils.i18n import gettext as _
+from rqrobot.utils import RqAttrDict
 
 
 class ModHandler(object):
@@ -44,9 +44,9 @@ class ModHandler(object):
             if hasattr(user_mod_config, 'lib'):
                 lib_name = user_mod_config.lib
             elif mod_name in SYSTEM_MOD_LIST:
-                lib_name = "rqalpha.mod.rqalpha_mod_" + mod_name
+                lib_name = "rqrobot.mod.rqrobot_mod_" + mod_name
             else:
-                lib_name = "rqalpha_mod_" + mod_name
+                lib_name = "rqrobot_mod_" + mod_name
             system_log.debug(_(u"loading mod {}").format(lib_name))
             mod_module = import_mod(lib_name)
             if mod_module is None:

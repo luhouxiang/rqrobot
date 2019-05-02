@@ -14,10 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from rqalpha.events import EventBus
-from rqalpha.utils import get_account_type
-from rqalpha.utils.logger import system_log, user_log, user_detail_log
-from rqalpha.utils.i18n import gettext as _
+from rqrobot.events import EventBus
+from rqrobot.utils import get_account_type
+from rqrobot.utils.logger import system_log, user_log, user_detail_log
+from rqrobot.utils.i18n import gettext as _
 
 
 class Environment(object):
@@ -61,7 +61,7 @@ class Environment(object):
         """
         if Environment._env is None:
             raise RuntimeError(
-                _(u"Environment has not been created. Please Use `Environment.get_instance()` after RQAlpha init"))
+                _(u"Environment has not been created. Please Use `Environment.get_instance()` after rqrobot init"))
         return Environment._env
 
     def set_data_proxy(self, data_proxy):
@@ -145,7 +145,7 @@ class Environment(object):
 
     def get_plot_store(self):
         if self.plot_store is None:
-            from rqalpha.utils.plot_store import PlotStore
+            from rqrobot.utils.plot_store import PlotStore
             self.plot_store = PlotStore()
         return self.plot_store
 

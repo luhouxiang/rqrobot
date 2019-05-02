@@ -11,7 +11,7 @@
 *   想将回测好的策略直接用于实盘交易
 *   不同的品种设置不同的风控标准
 
-在设计 RQAlpha API 的时候，考虑到以上随时变化的需求，将这部分需要以参数方式的配置严格从代码层面剥离。同一份策略代码，通过启动策略时传入不同的参数来实现完全不同的策略开发、风控、运行和调优等的功能。
+在设计 rqrobot API 的时候，考虑到以上随时变化的需求，将这部分需要以参数方式的配置严格从代码层面剥离。同一份策略代码，通过启动策略时传入不同的参数来实现完全不同的策略开发、风控、运行和调优等的功能。
 
 .. warning::
 
@@ -22,7 +22,7 @@
 命令行运行
 ------------------------------------------------------
 
-在命令行模式中，我们预先定义了常用的参数作为命令行的 option，您可以直接在控制台输入参数来配置 RQAlpha，但并不是所有的参数都可以通过命令行来配置，如果有一些特殊的参数需要配置，请结合其他方式来配置您的策略。当然您也可以扩展命令行，来实现您指定的命令行 option 选项。
+在命令行模式中，我们预先定义了常用的参数作为命令行的 option，您可以直接在控制台输入参数来配置 rqrobot，但并不是所有的参数都可以通过命令行来配置，如果有一些特殊的参数需要配置，请结合其他方式来配置您的策略。当然您也可以扩展命令行，来实现您指定的命令行 option 选项。
 
 命令行参数
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,7 +39,7 @@
 -a            `- -` account                   设置账户类型及起始资金，比如股票期货混合策略，起始资金分别为10000, 20000 :code:`--account stock 10000 --account future 20000`
 -fq           `- -` frequency                 目前支持 :code:`1d` (日线回测) 和 :code:`1m` (分钟线回测)，如果要进行分钟线，请注意是否拥有对应的数据源，目前开源版本是不提供对应的数据源的
 -rt           `- -` run-type                  运行类型，:code:`b` 为回测，:code:`p` 为模拟交易, :code:`r` 为实盘交易
-N/A           `- -` resume                    在模拟交易和实盘交易中，RQAlpha支持策略的pause && resume，该选项表示开启 resume 功能
+N/A           `- -` resume                    在模拟交易和实盘交易中，rqrobot支持策略的pause && resume，该选项表示开启 resume 功能
 -l            `- -` log-level                 选择日志的输出等级，有 :code:`verbose` | code:`info` | :code:`warning` | :code:`error` 等选项，您可以通过设置 :code:`verbose` 来查看最详细的日志，或者设置 :code:`error` 只查看错误级别的日志输出
 N/A           `- -` locale                    选择语言， 支持 :code:`en` | :code:`cn`
 N/A           `- -` disable-user-system-log   关闭用户策略产生的系统日志(比如订单未成交等提示)
@@ -58,7 +58,7 @@ N/A           `- -` config                    设置配置文件路径
 
 .. code-block:: python3
 
-   rqalpha run -rt p -fq 1m -f strategy.py --account stock 100000 -mc sys_stock_realtime.enabled True -mc sys_stock_realtime.fps 60
+   rqrobot run -rt p -fq 1m -f strategy.py --account stock 100000 -mc sys_stock_realtime.enabled True -mc sys_stock_realtime.fps 60
 
 系统内置 Mod Option扩展
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -87,21 +87,21 @@ N/A           `- -` signal                    [sys_simulation]开启信号模式
 通过 Mod 自定义扩展命令行参数
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-RQAlpha 非常灵活，您可以在您的 Mod 中扩展命令行，我们以 `sys_analyser Mod <https://github.com/ricequant/rqalpha/tree/master/rqalpha/mod/rqalpha_mod_sys_analyser>`_ 添加自定义option :code:`--plot` 来实现展示收益图为例，来介绍以下如何扩展您自己的命令行参数。
+rqrobot 非常灵活，您可以在您的 Mod 中扩展命令行，我们以 `sys_analyser Mod <https://github.com/ricequant/rqrobot/tree/master/rqrobot/mod/rqrobot_mod_sys_analyser>`_ 添加自定义option :code:`--plot` 来实现展示收益图为例，来介绍以下如何扩展您自己的命令行参数。
 
 .. note::
 
-    rqalpha_mod_sys_analyser 对应源码请访问 `这里 <https://github.com/ricequant/rqalpha/blob/master/rqalpha/mod/rqalpha_mod_sys_analyser/__init__.py>`_ 进行查看。
+    rqrobot_mod_sys_analyser 对应源码请访问 `这里 <https://github.com/ricequant/rqrobot/blob/master/rqrobot/mod/rqrobot_mod_sys_analyser/__init__.py>`_ 进行查看。
 
-RQAlpha 使用 `click <http://click.pocoo.org/5/>`_ 来实现命令行参数配置，您需要通过 click 来构建 option。
-通过 :code:`from rqalpha import cli` 来获取命令行对象。
+rqrobot 使用 `click <http://click.pocoo.org/5/>`_ 来实现命令行参数配置，您需要通过 click 来构建 option。
+通过 :code:`from rqrobot import cli` 来获取命令行对象。
 
 .. code-block:: python
 
     import click
-    from rqalpha import cli
+    from rqrobot import cli
 
-接下来我们命令 :code:`rqalpha run` 中添加参数 :code:`--plot` 来实现画图的功能
+接下来我们命令 :code:`rqrobot run` 中添加参数 :code:`--plot` 来实现画图的功能
 
 .. code-block:: python
 
@@ -113,7 +113,7 @@ RQAlpha 使用 `click <http://click.pocoo.org/5/>`_ 来实现命令行参数配�
         )
     )
 
-我们还希望可以通过 :code:`$ rqalpha plot result_pickle_file_path` 来将之前通过pickle文件报错的某次回测的结果进行画图
+我们还希望可以通过 :code:`$ rqrobot plot result_pickle_file_path` 来将之前通过pickle文件报错的某次回测的结果进行画图
 
 .. code-block:: python
 
@@ -136,7 +136,7 @@ RQAlpha 使用 `click <http://click.pocoo.org/5/>`_ 来实现命令行参数配�
 
 在每次运行策略时，有一些参数是固定不变的，我们可以将不经常改变的参数写入配置文件。
 
-RQAlpha 在运行策略时候会在当前目录下寻找 `config.yml` 或者  `config.json` 文件作为用户配置文件来读取。
+rqrobot 在运行策略时候会在当前目录下寻找 `config.yml` 或者  `config.json` 文件作为用户配置文件来读取。
 
 创建 `config.yml` 配置文件
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,21 +171,21 @@ RQAlpha 在运行策略时候会在当前目录下寻找 `config.yml` 或者  `c
         # 开启 plot 功能
         plot: true
 
-当创建好 `config.yml` 文件后，执行 :code:`$ rqalpha run` 即可运行策略。
+当创建好 `config.yml` 文件后，执行 :code:`$ rqrobot run` 即可运行策略。
 
 创建默认配置文件模板
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-您可以通过该命令在当前目录下创建一份包含了 RQAlpha 基础配置项的全部参数默认值的模板文件。
+您可以通过该命令在当前目录下创建一份包含了 rqrobot 基础配置项的全部参数默认值的模板文件。
 
 .. code-block:: bash
 
-    $ rqalpha generate_config
+    $ rqrobot generate_config
 
 ::
 
     # see more config
-    # http://rqalpha.readthedocs.io/zh_CN/stable/intro/run_algorithm.html
+    # http://rqrobot.readthedocs.io/zh_CN/stable/intro/run_algorithm.html
     version: 0.1.6
 
     # 白名单，设置可以直接在策略代码中指定哪些模块的配置项目
@@ -210,9 +210,9 @@ RQAlpha 在运行策略时候会在当前目录下寻找 `config.yml` 或者  `c
       frequency: 1d
       # Benchmark，如果不设置，默认没有基准参照。
       benchmark: ~
-      # 在模拟交易和实盘交易中，RQAlpha支持策略的pause && resume，该选项表示开启 resume 功能
+      # 在模拟交易和实盘交易中，rqrobot支持策略的pause && resume，该选项表示开启 resume 功能
       resume_mode: false
-      # 在模拟交易和实盘交易中，RQAlpha支持策略的pause && resume，该选项表示开启 persist 功能呢，
+      # 在模拟交易和实盘交易中，rqrobot支持策略的pause && resume，该选项表示开启 persist 功能呢，
       # 其会在每个bar结束对进行策略的持仓、账户信息，用户的代码上线文等内容进行持久化
       persist: false
       persist_mode: real_time
@@ -250,7 +250,7 @@ RQAlpha 在运行策略时候会在当前目录下寻找 `config.yml` 或者  `c
 策略内配置参数信息
 ------------------------------------------------------
 
-RQAlpha 提供了策略内配置参数信息的功能，您可以方便的在策略文件中配置参数，我们以 `test_f_buy_and_hold 文件 <https://github.com/ricequant/rqalpha/blob/master/tests/test_f_buy_and_hold.py>`_ 为例来介绍此种策略运行方式。
+rqrobot 提供了策略内配置参数信息的功能，您可以方便的在策略文件中配置参数，我们以 `test_f_buy_and_hold 文件 <https://github.com/ricequant/rqrobot/blob/master/tests/test_f_buy_and_hold.py>`_ 为例来介绍此种策略运行方式。
 
 .. code-block:: python
 
@@ -287,20 +287,20 @@ RQAlpha 提供了策略内配置参数信息的功能，您可以方便的在策
         },
     }
 
-RQAlpha 会自动识别策略中的 :code:`__config__` 变量。
+rqrobot 会自动识别策略中的 :code:`__config__` 变量。
 
 .. warning::
 
-    虽然 RQAlpha 提供了此种方式来配置策略，但主要用于自动化测试中对每个策略进行参数配置，不建议在策略开发和运行中使用此方式运行策略。
+    虽然 rqrobot 提供了此种方式来配置策略，但主要用于自动化测试中对每个策略进行参数配置，不建议在策略开发和运行中使用此方式运行策略。
 
-通过引用 RQAlpha 库在代码中运行策略
+通过引用 rqrobot 库在代码中运行策略
 ------------------------------------------------------
 
-并不是所有业务场景下都需要使用 :code:`rqalpha run` 命令行的方式来运行策略，您也可以在您的脚本/程序中直接运行 RQAlpha。
+并不是所有业务场景下都需要使用 :code:`rqrobot run` 命令行的方式来运行策略，您也可以在您的脚本/程序中直接运行 rqrobot。
 
 .. note::
 
-  即使通过代码方式启动策略，RQAlpha 也会寻找代码执行目录是否存在 `config.yml` / `config.json` 文件，作为用户配置文件来加载配置。但代码中传入的 `config` 优先级更高。
+  即使通过代码方式启动策略，rqrobot 也会寻找代码执行目录是否存在 `config.yml` / `config.json` 文件，作为用户配置文件来加载配置。但代码中传入的 `config` 优先级更高。
 
 使用 :code:`run_file` 函数来运行策略
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -310,7 +310,7 @@ RQAlpha 会自动识别策略中的 :code:`__config__` 变量。
 .. code-block:: python
 
     # run_file_demo
-    from rqalpha import run_file
+    from rqrobot import run_file
 
     config = {
       "base": {
@@ -344,10 +344,10 @@ RQAlpha 会自动识别策略中的 :code:`__config__` 变量。
 .. code-block:: python
     
     # run_code_demo
-    from rqalpha import run_code
+    from rqrobot import run_code
 
     code = """
-    from rqalpha.api import *
+    from rqrobot.api import *
 
 
     def init(context):
@@ -398,8 +398,8 @@ RQAlpha 会自动识别策略中的 :code:`__config__` 变量。
 .. code-block:: python
 
     # run_func_demo
-    from rqalpha.api import *
-    from rqalpha import run_func
+    from rqrobot.api import *
+    from rqrobot import run_func
 
 
     def init(context):

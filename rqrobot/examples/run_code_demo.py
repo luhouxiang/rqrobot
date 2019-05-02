@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from rqalpha import run_code
+from rqrobot import run_code
 
 code = """
-from rqalpha.api import *
+from rqrobot.api import *
 
 
 def init(context):

@@ -1,5 +1,5 @@
-from rqalpha.api import *
-from rqalpha import subscribe_event
+from rqrobot.api import *
+from rqrobot import subscribe_event
 
 
 def on_trade_handler(event):
@@ -48,4 +48,4 @@ def handle_bar(context, bar_dict):
         order_percent(context.s1, 1)
         context.fired = True
 
-# rqalpha run -f ./rqalpha/examples/subscribe_event.py -s 2016-06-01 -e 2016-12-01 --stock-starting-cash 100000 --benchmark 000300.XSHG
+# rqrobot run -f ./rqrobot/examples/subscribe_event.py -s 2016-06-01 -e 2016-12-01 --stock-starting-cash 100000 --benchmark 000300.XSHG

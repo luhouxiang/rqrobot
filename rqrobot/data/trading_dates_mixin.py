@@ -17,7 +17,7 @@
 import datetime
 import pandas as pd
 
-from rqalpha.utils.py2 import lru_cache
+from rqrobot.utils.py2 import lru_cache
 
 
 def _to_timestamp(d):

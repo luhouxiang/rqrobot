@@ -7,16 +7,16 @@ CHANGELOG
 
 - 配置和命令
 
-  - :code:`rqalpha run` 命令增加参数 :code:`-mk/--market`，用来标识策略交易标的所在的市场，如 cn、hk 等。
-  - :code:`rqalpha update_bundle` 更改为 :code:`rqalpha update-bundle`。
+  - :code:`rqrobot run` 命令增加参数 :code:`-mk/--market`，用来标识策略交易标的所在的市场，如 cn、hk 等。
+  - :code:`rqrobot update_bundle` 更改为 :code:`rqrobot update-bundle`。
 
 - 接口和 Mod
 
   - 增加新接口 :code:`AbstractTransactionCostDecider`，在 :code:`Environment` 中注册该接口的实现可以自定义不同合约品种、不同市场的税费计算逻辑。
   - 增加新 Mod :code:`sys_transaction_cost` 实现上述接口，抽离了原 :code:`sys_simulation` Mod 中的税费计算逻辑，并加入了对港股税费计算的支持。
   - 移除 :code:`sys_booking` Mod，booking 相关逻辑移入框架中，:code:`Booking` 与 :code:`Portfolio` 类地位相当。
-  - 移除 :code:`sys_stock_realtime` Mod，该 Mod 被移到了单独的 `仓库 <https://github.com/ricequant/rqalpha-mod-stock-realtime>`_ ，不再与框架一同维护。
-  - 移除 :code:`sys_stock_incremental` Mod，该 Mod 被移到了单独的 `仓库 <https://github.com/ricequant/rqalpha-mod-incremental>`_ ，不再与框架一同维护。
+  - 移除 :code:`sys_stock_realtime` Mod，该 Mod 被移到了单独的 `仓库 <https://github.com/ricequant/rqrobot-mod-stock-realtime>`_ ，不再与框架一同维护。
+  - 移除 :code:`sys_stock_incremental` Mod，该 Mod 被移到了单独的 `仓库 <https://github.com/ricequant/rqrobot-mod-incremental>`_ ，不再与框架一同维护。
 
 
 - 类型和 Api
@@ -67,7 +67,7 @@ CHANGELOG
 3.1.1
 ==================
 
-- 修复 :code:`rqalpha mod uninstall` 命令不兼容 pip 10.0 以上版本的bug。
+- 修复 :code:`rqrobot mod uninstall` 命令不兼容 pip 10.0 以上版本的bug。
 - 不再限制 logbook 库的版本上限。
 - python 2.7/3.5/3.6 环境下不再限制 bcolz 的版本上限。
 
@@ -106,15 +106,15 @@ CHANGELOG
 
 - 其他
 
-  - Fix `Issue 224 <https://github.com/ricequant/rqalpha/issues/224>`_ ， 解决了展示图像时图像不能被保存的问题。
+  - Fix `Issue 224 <https://github.com/ricequant/rqrobot/issues/224>`_ ， 解决了展示图像时图像不能被保存的问题。
   - 策略运行失败时 return code 为 1。
   - 开启 :code:`force_run_init_when_pt_resume` 参数时，策略启动前将会清空 universe。
   - 移除对 `better-exceptions <https://github.com/Qix-/better-exceptions>`_ 库的依赖，可以通过安装并设置环境变量的方式获得更详细的错误栈。
   - 修复 :code:`StockPosition` 类中股票卖空买回时计算平均开仓价格错误的 bug。
   - 修复画图时最大回撤计算错误的 bug。
   - 重构 :code:`Executor`，现在 EventSource 不再需要发出 SETTLEMENT 事件，框架会在第二个交易日 BEFORE_TRAINDG 事件前先发出 SETTLEMENT 事件，如果 EventSource 未发出 BEFORE_TRAINDG 事件，该事件会在第一个行情事件到来时被框架发出。
-  - 加入新 Mod :code:`rqalpha_mod_sys_incremental`，启用该 Mod 可以增量运行回测，方便长期跟踪策略而不必反复运行跑过的日期，详情参考文档 `sys_incremental Mod README <https://github.com/ricequant/rqalpha/blob/master/rqalpha/mod/rqalpha_mod_sys_incremental/README.rst>`_。
-  - 加入新 Mod :code:`rqalpha_mod_sys_booking`，该 Mod 用于从外部加载仓位作为实盘交易的初始仓位，详情参考文档 `sys_booking Mod README <https://github.com/ricequant/rqalpha/blob/master/rqalpha/mod/rqalpha_mod_sys_booking/README.rst>`_。
+  - 加入新 Mod :code:`rqrobot_mod_sys_incremental`，启用该 Mod 可以增量运行回测，方便长期跟踪策略而不必反复运行跑过的日期，详情参考文档 `sys_incremental Mod README <https://github.com/ricequant/rqrobot/blob/master/rqrobot/mod/rqrobot_mod_sys_incremental/README.rst>`_。
+  - 加入新 Mod :code:`rqrobot_mod_sys_booking`，该 Mod 用于从外部加载仓位作为实盘交易的初始仓位，详情参考文档 `sys_booking Mod README <https://github.com/ricequant/rqrobot/blob/master/rqrobot/mod/rqrobot_mod_sys_booking/README.rst>`_。
 
 3.0.10
 ==================
@@ -135,9 +135,9 @@ CHANGELOG
 3.0.8
 ==================
 
-- 修复 :code:`rqalpha run --config` 参数
-- 增加 ON_NORMAL_EXIT 的持久化模式，在 RQAlpha 成功运行完毕后进行 persist 。可以在盘后快速地根据昨日持久化数据继续运行回测来增量回测。
-- 增加 :code:`rqalpha run --logger` 参数可以单独设置特定的 logger 的 level
+- 修复 :code:`rqrobot run --config` 参数
+- 增加 ON_NORMAL_EXIT 的持久化模式，在 rqrobot 成功运行完毕后进行 persist 。可以在盘后快速地根据昨日持久化数据继续运行回测来增量回测。
+- 增加 :code:`rqrobot run --logger` 参数可以单独设置特定的 logger 的 level
 - 增加 persist_provider 的检查
 - 修复 :code:`get_prev_close`
 - 打印 mod 的启动状态信息，方便 debug
@@ -146,7 +146,7 @@ CHANGELOG
 - 重构股票账户 :code:`last_price` 更新
 - 修复期货下单拒单是错误信息typo
 - 当启动LIVE_TRADING模式的时候，跳过simulation_mod的初始化
-- 增加 :code:`rqalpha run --position` 来设置初始仓位的功能
+- 增加 :code:`rqrobot run --position` 来设置初始仓位的功能
 -
 
 3.0.6
@@ -167,11 +167,11 @@ CHANGELOG
 ==================
 
 - 取消在股票下单函数中对 `order_book_id` 类型的检查，现在您可以交易 `ETF`, `LOF`, `FenjiMu`, `FenjiA`, `FenjiB`, `INDX` 了
-- Merge `PR 170 <https://github.com/ricequant/rqalpha/pull/170>`_ 解决自定义 `volume limit` 时显示数值不正确的问题。
-- Fix `Issue 148 <https://github.com/ricequant/rqalpha/issues/148>`_ `get_dividend()方法返回的类型是numpy.ndarray，而非pandas.DataFrame`
-- Fix `Issue 169 <https://github.com/ricequant/rqalpha/issues/169>`_ 执行 `rqalpha mod install ctp==0.2.0dev0` 时错误的记录了库信息的问题
-- Fix `Issue 158 <https://github.com/ricequant/rqalpha/issues/158>`_ 多次循环 `run_file` / `run_code` 时导致的内存泄漏的问题
-- Enhance `Issue 166 <https://github.com/ricequant/rqalpha/issues/166>`_ 启动参数支持 `--no-stock-t1` 来屏蔽股票 T + 1 导致今仓的限制
+- Merge `PR 170 <https://github.com/ricequant/rqrobot/pull/170>`_ 解决自定义 `volume limit` 时显示数值不正确的问题。
+- Fix `Issue 148 <https://github.com/ricequant/rqrobot/issues/148>`_ `get_dividend()方法返回的类型是numpy.ndarray，而非pandas.DataFrame`
+- Fix `Issue 169 <https://github.com/ricequant/rqrobot/issues/169>`_ 执行 `rqrobot mod install ctp==0.2.0dev0` 时错误的记录了库信息的问题
+- Fix `Issue 158 <https://github.com/ricequant/rqrobot/issues/158>`_ 多次循环 `run_file` / `run_code` 时导致的内存泄漏的问题
+- Enhance `Issue 166 <https://github.com/ricequant/rqrobot/issues/166>`_ 启动参数支持 `--no-stock-t1` 来屏蔽股票 T + 1 导致今仓的限制
 - 性能提升: 使用 `bisect_right` 代替 `searchsorted`
 
 3.0.0
@@ -194,13 +194,13 @@ CHANGELOG
 .. code-block:: bash
 
   # 策略通过命令行运行，设置可交易类型是股票，起始资金为 10000
-  $ rqalpha run --account stock 10000
+  $ rqrobot run --account stock 10000
   # 策略通过命令行运行，设置可交易类型为期货，起始资金为 50000
-  $ rqalpha run --account future 50000
+  $ rqrobot run --account future 50000
   # 策略通过命令行运行，设置可交易类型为期货和股票，起始资金分别为 股票 10000, 期货 50000
-  $ rqalpha run --account stock 10000 --account future 50000
+  $ rqrobot run --account stock 10000 --account future 50000
   # 如果您通过 Mod 扩展，自定义了一种可交易类型(假设是huobi)，您也可以增加对于火币的支持和起始资金设置
-  $ rqalpha run --account stock 10000 --account future 50000 --account huobi 20000
+  $ rqrobot run --account stock 10000 --account future 50000 --account huobi 20000
 
 - 相应，如果您通过 :code:`run_file | run_code | run_func` 来启动策略，配置文件及配置信息也做了对应的调整:
 
@@ -271,11 +271,11 @@ CHANGELOG
 
 **[For Mod developer]**
 
-本次更新可能导致已实现 Mod 无法正常使用，请按照文档升级您的 Mod，或者使用 2.2.x 版本 RQAlpha
+本次更新可能导致已实现 Mod 无法正常使用，请按照文档升级您的 Mod，或者使用 2.2.x 版本 rqrobot
 
-在通过 Mod 扩展 RQAlpha 的时候，由于 RQAlpha 直接定义了 `Account` 和 `Position` 相关的 Model, 增加新的 `account` 和 `position` 变得非常的困难，想扩展更多类型是一件很麻烦的事情，因此我们决定重构该模块从而解决这些问题。
+在通过 Mod 扩展 rqrobot 的时候，由于 rqrobot 直接定义了 `Account` 和 `Position` 相关的 Model, 增加新的 `account` 和 `position` 变得非常的困难，想扩展更多类型是一件很麻烦的事情，因此我们决定重构该模块从而解决这些问题。
 
-详情请查看: https://github.com/ricequant/rqalpha/issues/160
+详情请查看: https://github.com/ricequant/rqrobot/issues/160
 
 主要进行如下更改:
 
@@ -284,7 +284,7 @@ CHANGELOG
 - 原先所有使用 `ACCOUNT_TYPE` 作为 key 的地方，不再使用 Enum 类型作为 Key, 而是修改为对应 Enum 的 name 作为key。比如说原本使用 :code:`portfolio.accounts[ACCOUNT_TYPE.STOCK]` 更改为 :code:`portfolio.accounts['STOCK']`
 - :code:`Environment` 提供 :code:`set_account_model` | :code:`get_account_model` | :code:`set_position_model` | :code:`get_position_model` API 来注入 自定义Model。
 - :code:`Environment` 提供 :code:`set_smart_order` API 来注入自定义账户类型的智能下单函数，从而通过通用的 :code:`order` | :code:`order_to` API 便可以交易对应自定义账户类型。
-- RQAlpha 将已有的 AccountModel, PositionModel 和 API 抽离至 `rqalpha_mod_sys_accounts` 中，通过如下方式注入:
+- rqrobot 将已有的 AccountModel, PositionModel 和 API 抽离至 `rqrobot_mod_sys_accounts` 中，通过如下方式注入:
 
 .. code-block:: python
 
@@ -328,28 +328,28 @@ CHANGELOG
 2.2.7
 ==================
 
-- 解决当存在无效 Mod 时，RQAlpha 崩溃无法启动的问题
+- 解决当存在无效 Mod 时，rqrobot 崩溃无法启动的问题
 - 修复期货下单函数默认 style 为 None 导致报错退出的问题
 
 2.2.5
 ==================
 
-- 增加 IPython Magic 方便在 IPython 中运行回测 `run-rqalpha-in-ipython.ipynb <https://github.com/ricequant/rqalpha/blob/master/docs/source/notebooks/run-rqalpha-in-ipython.ipynb>`_ 。运行完回测后，会将所有的 mod 的输出结果保存在 results 变量中，并且会将回测报告存储在 report 对象中。
+- 增加 IPython Magic 方便在 IPython 中运行回测 `run-rqrobot-in-ipython.ipynb <https://github.com/ricequant/rqrobot/blob/master/docs/source/notebooks/run-rqrobot-in-ipython.ipynb>`_ 。运行完回测后，会将所有的 mod 的输出结果保存在 results 变量中，并且会将回测报告存储在 report 对象中。
 - 修复系统异常、用户异常的区分判断
 - 增加 :code:`--source-code` 参数可以直接在命令行中传入策略源代码进行回测，这个选项目前主要给 IPython 使用。
 - 对于 :code:`history_bars` 当 fields 为 None 的时候，指定为 ["datetime", "open", "high", "low", "close", "volume"] 。
-- 重构 rqalpha_mod_sys_funcat 的数据获取
+- 重构 rqrobot_mod_sys_funcat 的数据获取
 - 修复 order 的 set_state 的 bug
 - 优化分红计算
 - 提取 inject_mod_commands 给 click 参数注入
 
 .. code-block:: python
 
-  # 加载 rqalpha 插件
-  %load_ext rqalpha
+  # 加载 rqrobot 插件
+  %load_ext rqrobot
 
   # 运行回测
-  %% rqalpha -s 20160101 -e 20170101 -sc 100000
+  %% rqrobot -s 20160101 -e 20170101 -sc 100000
 
 2.2.4
 ==================
@@ -368,7 +368,7 @@ CHANGELOG
   order_shares("000001.XSHE", 100, style=LimitOrder(200))
 
 - :code:`buy_close` 和 :code:`sell_close` API 增加 :code:`close_today` 参数，现在您现在可以指定发平今单了。
-- Breaking Change: 原本期货中的 :code:`buy_close` 和 :code:`sell_close` API 返回的 :code:`Order` 对象。但实际交易过程中，涉及到昨仓今仓的时候，可能会存在发单被拒单的情况，RQAlpha 进行平昨/平今智能拆单的处理，因此在一些情况下会生成多个订单，对应也会返回一个订单列表。期货平仓更新的内容请参考 `Issue 116 <https://github.com/ricequant/rqalpha/issues/116>`_
+- Breaking Change: 原本期货中的 :code:`buy_close` 和 :code:`sell_close` API 返回的 :code:`Order` 对象。但实际交易过程中，涉及到昨仓今仓的时候，可能会存在发单被拒单的情况，rqrobot 进行平昨/平今智能拆单的处理，因此在一些情况下会生成多个订单，对应也会返回一个订单列表。期货平仓更新的内容请参考 `Issue 116 <https://github.com/ricequant/rqrobot/issues/116>`_
 - Breaking Change: 取消 :code:`Order` | :code:`Trade` 对应的 :code:`__from_create__` 函数中 :code:`calendar_dt` 和 :code:`trading_dt` 的传入，对接第三方交易源，构建订单和成交的 Mod 可能会产生影响，需要进行修改.
 
 .. code-block:: python
@@ -392,14 +392,14 @@ CHANGELOG
     position_effect
   )
 
-- `iPython` 更新至 6.0 版本以后不再支持 `Python 2.x` 导致在 `Python 2.x` 下安装RQAlpha 因为 `line-profiler` 依赖 `iPython` 的缘故而报错。目前增加了在 `Python 2.x` 下依赖 `iPython 5.3.0` 版本解决此问题。
-- 不再提供 `rqalpha-cmd` 命令的扩展和注入，目前只有一个 entry point: `rqalpha` 第三方 Mod 可以扩展 `rqalpha` 命令。
-- 增加 :code:`from rqalpha import subscribe_event` 来支持事件订阅(暂时不增加到API中，您如果想在策略里使用，也需要主动 import 该函数), 如下示例所示:
+- `iPython` 更新至 6.0 版本以后不再支持 `Python 2.x` 导致在 `Python 2.x` 下安装rqrobot 因为 `line-profiler` 依赖 `iPython` 的缘故而报错。目前增加了在 `Python 2.x` 下依赖 `iPython 5.3.0` 版本解决此问题。
+- 不再提供 `rqrobot-cmd` 命令的扩展和注入，目前只有一个 entry point: `rqrobot` 第三方 Mod 可以扩展 `rqrobot` 命令。
+- 增加 :code:`from rqrobot import subscribe_event` 来支持事件订阅(暂时不增加到API中，您如果想在策略里使用，也需要主动 import 该函数), 如下示例所示:
 
 .. code-block:: python
 
-  from rqalpha.api import *
-  from rqalpha import subscribe_event
+  from rqrobot.api import *
+  from rqrobot import subscribe_event
 
 
   def on_trade_handler(event):
@@ -436,9 +436,9 @@ CHANGELOG
           order_percent(context.s1, 1)
           context.fired = True
 
-  # rqalpha run -f ./rqalpha/examples/subscribe_event.py -s 2016-06-01 -e 2016-12-01 --stock-starting-cash 100000 --benchmark 000300.XSHG
+  # rqrobot run -f ./rqrobot/examples/subscribe_event.py -s 2016-06-01 -e 2016-12-01 --stock-starting-cash 100000 --benchmark 000300.XSHG
 
-- `sys_stock_realtime` 提供了一个行情下载服务，启动该服务，会实时往 redis 中写入全市场股票行情数据。多个 RQAlpha 可以连接该 redis 获取实时盘口数据，就不需要重复获取数据。详情参考文档 `sys stock realtime mod README <https://github.com/ricequant/rqalpha/blob/master/rqalpha/mod/rqalpha_mod_sys_stock_realtime/README.rst>`_
+- `sys_stock_realtime` 提供了一个行情下载服务，启动该服务，会实时往 redis 中写入全市场股票行情数据。多个 rqrobot 可以连接该 redis 获取实时盘口数据，就不需要重复获取数据。详情参考文档 `sys stock realtime mod README <https://github.com/ricequant/rqrobot/blob/master/rqrobot/mod/rqrobot_mod_sys_stock_realtime/README.rst>`_
 - 解决期货策略持仓到交割导致可用资金计算不准确的问题
 - 解决 `--plot` 时候会报错退出的问题
 
@@ -446,10 +446,10 @@ CHANGELOG
 2.2.2
 ==================
 
-- 增加 :code:`run_file` | :code:`run_code` | :code:`run_func` API, 详情请参见 `多种方式运行策略 <http://rqalpha.io/zh_CN/latest/intro/run_algorithm.html>`_
+- 增加 :code:`run_file` | :code:`run_code` | :code:`run_func` API, 详情请参见 `多种方式运行策略 <http://rqrobot.io/zh_CN/latest/intro/run_algorithm.html>`_
 - Breaking Change: 更改 :code:`AbstractStrategyLoader:load` 函数的传入参数，现在不需要 :code:`strategy` 了。
 - 增加 :code:`UserFuncStrategyLoader` 类
-- 根据 `Issue 116 <https://github.com/ricequant/rqalpha/issues/116>`_ 增加如下内容:
+- 根据 `Issue 116 <https://github.com/ricequant/rqrobot/issues/116>`_ 增加如下内容:
 
   - :code:`POSITION_EFFECT` 增加 :code:`CLOSE_TODAY` 类型
   - 增加调仓函数 :code:`order(order_book_id, quantity, price=None)` API
@@ -471,9 +471,9 @@ CHANGELOG
 
   - 现有所有下单函数，增加 `price` option，具体行为和 :code:`order` | :code:`order_to` 一致
 
-- Fix bug in :code:`all_instruments` `PR 123 <https://github.com/ricequant/rqalpha/pull/123>`_
-- Fix "运行不满一天的情况下 sys_analyser 报 KeyError" `PR 118 <https://github.com/ricequant/rqalpha/pull/118>`_
-- sys_analyser 生成 report 对应的字段进行调整，具体调整内容请查看 commit `d9d19f <https://github.com/ricequant/rqalpha/commit/f6e4c24fde2f086cc09b45b2cc4d2cfe0cd9d19f>`_
+- Fix bug in :code:`all_instruments` `PR 123 <https://github.com/ricequant/rqrobot/pull/123>`_
+- Fix "运行不满一天的情况下 sys_analyser 报 KeyError" `PR 118 <https://github.com/ricequant/rqrobot/pull/118>`_
+- sys_analyser 生成 report 对应的字段进行调整，具体调整内容请查看 commit `d9d19f <https://github.com/ricequant/rqrobot/commit/f6e4c24fde2f086cc09b45b2cc4d2cfe0cd9d19f>`_
 
 2.2.0
 ==================
@@ -482,31 +482,31 @@ CHANGELOG
 - 更新数据源，现在使用原始数据和复权因子的方式进行回测
 - 不再使用 `ruamel.yaml` 该库在某些情况下无法正确解析 yml 配置文件
 - 解决 `six` 库依赖多次引用导致安装出错的问题
-- 解决 :code:`rqalpha run` 的时候指定 :code:`-st` | :code:`--kind` 时报错的问题
+- 解决 :code:`rqrobot run` 的时候指定 :code:`-st` | :code:`--kind` 时报错的问题
 - :code:`--security` / :code:`-st` 现在支持多种模式，可以使用 :code:`-st stock -st future` 也可以使用 :code:`-st stock_future` 来设置security
-- 更新 BarDictPriceBoard `Issue 115 <https://github.com/ricequant/rqalpha/issues/115>`_
-- 解决 :code:`print(context.portfolio)` 时因为调用了 `abandon property` 会报 warning 的问题 `Issue 114 <https://github.com/ricequant/rqalpha/issues/114>`_
-- 解决 :code:`rqalpha mod install xx` 不存在的 Mod 也会导致 mod_config.yml 更新的问题 `Issue 111 <https://github.com/ricequant/rqalpha/issues/111>`_
-- 解决 :code:`rqalpha plot` 无法画图的问题 `Issue 109 <https://github.com/ricequant/rqalpha/issues/109>`_
+- 更新 BarDictPriceBoard `Issue 115 <https://github.com/ricequant/rqrobot/issues/115>`_
+- 解决 :code:`print(context.portfolio)` 时因为调用了 `abandon property` 会报 warning 的问题 `Issue 114 <https://github.com/ricequant/rqrobot/issues/114>`_
+- 解决 :code:`rqrobot mod install xx` 不存在的 Mod 也会导致 mod_config.yml 更新的问题 `Issue 111 <https://github.com/ricequant/rqrobot/issues/111>`_
+- 解决 :code:`rqrobot plot` 无法画图的问题 `Issue 109 <https://github.com/ricequant/rqrobot/issues/109>`_
 
 2.1.4
 ==================
 
 - 解决 history_bars 在 before_trading 获取的是未来数据的问题
 - 解决 before_trading 获取结算价是当前交易日结算价的问题
-- 增加 RQAlpha 向前兼容(0.3.x) `Issue 100 <https://github.com/ricequant/rqalpha/issues/100>`_
-- 期货增加强平机制: 及当前账户权益<=0时，清空仓位，资金置0 `Issue 108 <https://github.com/ricequant/rqalpha/issues/108>`_
+- 增加 rqrobot 向前兼容(0.3.x) `Issue 100 <https://github.com/ricequant/rqrobot/issues/100>`_
+- 期货增加强平机制: 及当前账户权益<=0时，清空仓位，资金置0 `Issue 108 <https://github.com/ricequant/rqrobot/issues/108>`_
 - 解决回测时只有一个交易日时，只有回测数据显示的问题
 
 2.1.3
 ==================
 
-- Fix `Issue 101 <https://github.com/ricequant/rqalpha/issues/101>`_
-- Fix `Issue 105 <https://github.com/ricequant/rqalpha/issues/105>`_
-- 解决运行 RQAlpha 时缺少 `six` | `requests` 库依赖的问题
-- 解决安装RQAlpha时在某些情况下报错的问题
+- Fix `Issue 101 <https://github.com/ricequant/rqrobot/issues/101>`_
+- Fix `Issue 105 <https://github.com/ricequant/rqrobot/issues/105>`_
+- 解决运行 rqrobot 时缺少 `six` | `requests` 库依赖的问题
+- 解决安装rqrobot时在某些情况下报错的问题
 - 解决第三方 Mod 安装后配置文件路径有误的问题
-- 现在可以通过 `rqalpha mod install -e .` 的方式来安装依赖 Mod 了
+- 现在可以通过 `rqrobot mod install -e .` 的方式来安装依赖 Mod 了
 - 现在运行策略时会检测当前目录是否存在 `config.yml` 或者 `config.json` 来作为配置文件
 - 解决股票下单就存在 `position` 的问题，现在只有成交后才会产生 `position` 了。
 - 修复 `portfolio` 和 `future_account` 计算逻辑的一些问题
@@ -516,31 +516,31 @@ CHANGELOG
 2.1.2
 ==================
 
-- 提供 :code:`from rqalpha import cli` 方便第三方 Mod 扩展 `rqalpha` command
+- 提供 :code:`from rqrobot import cli` 方便第三方 Mod 扩展 `rqrobot` command
 - :code:`history_bars` 增加 :code:`include_now` option
-- Fix `Issue 90 <https://github.com/ricequant/rqalpha/issues/90>`_
-- Fix `Issue 94 <https://github.com/ricequant/rqalpha/issues/94>`_
+- Fix `Issue 90 <https://github.com/ricequant/rqrobot/issues/90>`_
+- Fix `Issue 94 <https://github.com/ricequant/rqrobot/issues/94>`_
 
 2.1.0
 ==================
 
-- Fix `Issue 87 <https://github.com/ricequant/rqalpha/issues/87>`_
-- Fix `Issue 89 <https://github.com/ricequant/rqalpha/pull/89>`_
+- Fix `Issue 87 <https://github.com/ricequant/rqrobot/issues/87>`_
+- Fix `Issue 89 <https://github.com/ricequant/rqrobot/pull/89>`_
 - Fix 无法通过 :code:`env.config.mod` 获取全部 `mod` 的配置信息
 - 增加 :code:`context.config` 来获取配置信息
-- 提供 :code:`from rqalpha import export_as_api` 接口，方便扩展自定义 API
+- 提供 :code:`from rqrobot import export_as_api` 接口，方便扩展自定义 API
 
 2.0.9
 ==================
 
-- Fix `Issue 79 <https://github.com/ricequant/rqalpha/issues/79>`_
-- Fix `Issue 82 <https://github.com/ricequant/rqalpha/issues/82>`_
-- Fix :code:`rqalpha cmd` 失效
+- Fix `Issue 79 <https://github.com/ricequant/rqrobot/issues/79>`_
+- Fix `Issue 82 <https://github.com/ricequant/rqrobot/issues/82>`_
+- Fix :code:`rqrobot cmd` 失效
 
 2.0.8
 ==================
 
-- Fix `Issue 81 <https://github.com/ricequant/rqalpha/issues/81>`_
+- Fix `Issue 81 <https://github.com/ricequant/rqrobot/issues/81>`_
 - 解决 `mod_config.yml` 文件解析出错以后，所有的命令报错的问题
 - 默认在 Python 2.x 下 `sys.setdefaultencoding("utf-8")`
 - 优化 `UNIVERSE_CHANGED` 事件，现在只有在universe真正变化时才触发
@@ -548,21 +548,21 @@ CHANGELOG
 2.0.7
 ==================
 
-- Fix `Issue 78 <https://github.com/ricequant/rqalpha/issues/78>`_
+- Fix `Issue 78 <https://github.com/ricequant/rqrobot/issues/78>`_
 - `is_st_stock` | `is_suspended` 支持 `count` 参数
 - 解决大量 Python 2.x 下中文乱码问题
 
 2.0.6
 ==================
 
-- 解决在 Python 2.x 下安装 RQAlpha 提示 `requirements-py2.txt Not Found` 的问题
+- 解决在 Python 2.x 下安装 rqrobot 提示 `requirements-py2.txt Not Found` 的问题
 - 解决 `Benchmark` 无法显示的问题
-- 解决 `rqalpha mod list` 显示不正确的问题
+- 解决 `rqrobot mod list` 显示不正确的问题
 - 现在可以通过配置 `base.extra_vars` 向策略中预定义变量了。用法如下:
 
 .. code-block:: python3
 
-    from rqalpha import run
+    from rqrobot import run
 
     config = {
       "base": {
@@ -593,9 +593,9 @@ CHANGELOG
 2.0.1
 ==================
 
-- 修改配置的读取方式，不再从 `~/.rqalpha/config.yml` 读取自定义配置信息，而是默认从当前路径读取 `config.yml`，如果没找到，则会读取系统默认配置信息
+- 修改配置的读取方式，不再从 `~/.rqrobot/config.yml` 读取自定义配置信息，而是默认从当前路径读取 `config.yml`，如果没找到，则会读取系统默认配置信息
 - 现在不再对自定义信息进行版本检查
-- :code:`rqalpha generate_config` 现在会生成包含所有默认系统配置信息的 `config.yml` 文件。
+- :code:`rqrobot generate_config` 现在会生成包含所有默认系统配置信息的 `config.yml` 文件。
 - :code:`RUN_TYPE` 增加 :code:`LIVE_TRADING`
 - 修复 :code:`history_bars` 获取日期错误产生的问题
 - 修复执行 :code:`context.run_info` 会报错的问题
@@ -606,7 +606,7 @@ CHANGELOG
 2.0.0
 ==================
 
-2.0.0 详细修改内容请访问：`RQAlpha 2.0.0 <https://github.com/ricequant/rqalpha/issues/65>`_
+2.0.0 详细修改内容请访问：`rqrobot 2.0.0 <https://github.com/ricequant/rqrobot/issues/65>`_
 
 **Portfolio/Account/Position 相关**
 
@@ -628,25 +628,25 @@ CHANGELOG
 
 **Mod 相关**
 
-- 规范化 Mod 命名规则，需要以 `rqalpha_mod_xxx` 作为 Mod 依赖库命名
+- 规范化 Mod 命名规则，需要以 `rqrobot_mod_xxx` 作为 Mod 依赖库命名
 - 抽离 :code:`slippage` 相关业务逻辑至 :code:`simulation mod`
 - 抽离 :code:`commission` 相关业务逻辑至 :code:`simulation mod`
 - 抽离 :code:`tax` 相关业务逻辑至 :code:`simulation mod`
-- `rqalpha mod list` 命令现在可以格式化显示 Mod 当前的状态了
+- `rqrobot mod list` 命令现在可以格式化显示 Mod 当前的状态了
 
 **Environment 和 ExecutionContext 相关**
 
 - 现在 :code:`ExecutionContext` 只负责上下文相关的内容，不再可以通过 :code:`ExecutionContext` 访问其他成员变量。
-- 扩展了 :code:`Environment` 的功能，RQAlpha 及 Mod 均可以直接通过 :code:`Environment.get_instance()` 来获取到环境中核心模块的引用
+- 扩展了 :code:`Environment` 的功能，rqrobot 及 Mod 均可以直接通过 :code:`Environment.get_instance()` 来获取到环境中核心模块的引用
 - :code:`Environment` 还提供了很多常用的方法，具体请直接参考代码
 
 **配置及参数相关**
 
-- 重构了配置相关的内容，`~/.rqalpha/config.yml` 现在类似于 Sublime/Atom 的用户配置文件，用于覆盖默认配置信息，因此只需要增加自定义配置项即可，不需要全部的配置内容都存在
+- 重构了配置相关的内容，`~/.rqrobot/config.yml` 现在类似于 Sublime/Atom 的用户配置文件，用于覆盖默认配置信息，因此只需要增加自定义配置项即可，不需要全部的配置内容都存在
 - 将Mod自己的默认配置从配置文件中删除，放在Mod中自行管理和维护
-- 独立存在 `~/.rqalpha/.mod_conifg.yml`, 提供 `rqalpha mod install/uninstall/enable/disable/list` 命令，RQAlpha 会通过该配置文件来对Mod进行管理。
-- 抽离 :code:`rqalpha run` 的参数，将其中属于 `Mod` 的参数全部删除，取代之为Mod提供了参数注入机制，所以现在 `Mod` 可以自行决定是否要注入参数或者命令来扩展 RQAlpha 的功能
-- 提供了 :code:`rqalpha-cmd` 命令，`Mod` 推荐在该命令下注入自己的命令来实现功能扩展
+- 独立存在 `~/.rqrobot/.mod_conifg.yml`, 提供 `rqrobot mod install/uninstall/enable/disable/list` 命令，rqrobot 会通过该配置文件来对Mod进行管理。
+- 抽离 :code:`rqrobot run` 的参数，将其中属于 `Mod` 的参数全部删除，取代之为Mod提供了参数注入机制，所以现在 `Mod` 可以自行决定是否要注入参数或者命令来扩展 rqrobot 的功能
+- 提供了 :code:`rqrobot-cmd` 命令，`Mod` 推荐在该命令下注入自己的命令来实现功能扩展
 - 不再使用 `--strategy-type`， 改为使用 `--security` 选项
 - `--output-file` | `--report` | `--plot` | `--plot-save`参数 转移至 `sys_analyser` Mod 中
 - `plot` | `report` 命令，转移至 `sys_analyser` Mod 中
@@ -691,7 +691,7 @@ CHANGELOG
 ==================
 
 - 优化 `setup.py` 脚本，只有在 python 2 环境下才安装兼容性依赖库
-- 增加 :code:`rqalpha install/uninstall/list/enable/disable` 命令
+- 增加 :code:`rqrobot install/uninstall/list/enable/disable` 命令
 - 增加 :code:`EVENT.POST_SYSTEM_RESTORED` 事件
 - 增加 净值和份额的支持，现在的收益和Analyser的计算都是基于净值了。
 - 在 AnalyserMod 输出的 Trade 中增加 :code:`side` 和 :code:`position_effect`
@@ -720,8 +720,8 @@ CHANGELOG
 
 - 增加 :code:`--disable-user-system-log` 参数，可以独立关闭回测过程中因策略而产生的系统日志
 - :code:`--log-level` 现在可以正确区分不同类型的日志，同时增加 :code:`none` 类型，用来关闭全部日志信息。
-- 在不指定配置文件的情况下，默认会调用 :code:`~/.rqalpha/config.yml` 文件
-- 支持 :code:`rqalpha generate_config` 命令来获取默认配置文件
+- 在不指定配置文件的情况下，默认会调用 :code:`~/.rqrobot/config.yml` 文件
+- 支持 :code:`rqrobot generate_config` 命令来获取默认配置文件
 - 指定策略类型不再使用 :code:`--kind` 参数，替换为 :code:`--strategy-type` 和配置文件呼应
 - 重构 :code:`events.py`，现在可以更好的支持基于事件的模块编写了
 - 将风险指标计算独立成 :code:`analyser` Mod
@@ -746,24 +746,24 @@ CHANGELOG
 ==================
 
 - support auto test with Travis [python 2.7 3.4 3.5 3.6]
-- :code:`rqalpha.run` 现在支持直接传入 :code:`source_code` 了
-- 支持 :code:`rqalpha.update_bundle` 函数
+- :code:`rqrobot.run` 现在支持直接传入 :code:`source_code` 了
+- 支持 :code:`rqrobot.update_bundle` 函数
 
 0.3.5
 ==================
 
-- 增加 :code:`from rqalpha import run` 接口，现在可以很方便的直接在程序中调用RQAlpha 回测了。
+- 增加 :code:`from rqrobot import run` 接口，现在可以很方便的直接在程序中调用rqrobot 回测了。
 
 0.3.4
 ==================
 
 - 本地化模块更具有扩展性
-- 修改 :code:`rqalpha update_bundle` 的目录结构，现在是在指定目录下生成一个 bundle 文件，而不再会直接删除当前文件夹内容了。
+- 修改 :code:`rqrobot update_bundle` 的目录结构，现在是在指定目录下生成一个 bundle 文件，而不再会直接删除当前文件夹内容了。
 
 0.3.3
 ==================
 
-- 解决 :code:`rqalpha examples -d .` 无样例策略生成的问题
+- 解决 :code:`rqrobot examples -d .` 无样例策略生成的问题
 
 0.3.2
 ==================
@@ -784,8 +784,8 @@ CHANGELOG
 - 支持混合策略(股票和期货混合)
 - 支持多种参数配置方式
 - 抽离接口层，数据源、事件源、撮合引擎、下单模块全部可以替换或扩展。
-- 完善事件定义，采取 pub/sub 模式，可以非常简答的在 RQAlpha 中添加 hook。
-- 增加 Mod 机制，极大的增加了 RQAlpha 的扩展性，使其可以轻松完成程序化交易过程中所产生的的特定需求。
+- 完善事件定义，采取 pub/sub 模式，可以非常简答的在 rqrobot 中添加 hook。
+- 增加 Mod 机制，极大的增加了 rqrobot 的扩展性，使其可以轻松完成程序化交易过程中所产生的的特定需求。
 
 0.0.53
 ==================
@@ -855,10 +855,10 @@ CHANGELOG
 .. code-block:: python3
 
   # 生成sample策略
-  rqalpha generate_examples -d ./
+  rqrobot generate_examples -d ./
 
   # 运行回测
-  rqalpha run -f examples/simple_macd.py -s 2013-01-01 -e 2015-01-04 -o /tmp/a.pkl
+  rqrobot run -f examples/simple_macd.py -s 2013-01-01 -e 2015-01-04 -o /tmp/a.pkl
 
 0.0.1
 ==================

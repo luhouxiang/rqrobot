@@ -33,13 +33,13 @@ install:
   - pip install ipython==5.3.0
   - pip install .
 script:
-  - ls -al $HOME/.rqalpha/
-  - ls -al $HOME/.rqalpha/bundle/
-  - rqalpha update-bundle
-  - coverage run --source=rqalpha test.py
+  - ls -al $HOME/.rqrobot/
+  - ls -al $HOME/.rqrobot/bundle/
+  - rqrobot update-bundle
+  - coverage run --source=rqrobot test.py
 cache:
   directories:
     - $HOME/.cache/pip
-    - $HOME/.rqalpha/bundle
+    - $HOME/.rqrobot/bundle
 after_success:
   coveralls
