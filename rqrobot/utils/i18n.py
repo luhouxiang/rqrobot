@@ -56,5 +56,5 @@ localization = Localization()
 
 
 def gettext(message):
-    trans_txt = localization.trans.gettext(message)
-    return to_utf8(trans_txt)
+    # trans_txt = localization.trans.gettext(message)
+    return to_utf8(message)

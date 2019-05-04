@@ -125,7 +125,7 @@ def set_locale(lc):
     except Exception as e:
         if os.name != 'nt':
             raise
-    localization.set_locale([lc])
+    # localization.set_locale([lc])
 
 
 def parse_config(config_args, config_path=None, click_type=False, source_code=None, user_funcs=None):
