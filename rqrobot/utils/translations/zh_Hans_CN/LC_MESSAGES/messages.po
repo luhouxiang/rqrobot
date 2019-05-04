@@ -8,21 +8,25 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-07-19 16:10+0800\n"
-"PO-Revision-Date: 2016-10-24 21:20+0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: zh_Hans_CN\n"
+"PO-Revision-Date: 2019-05-04 08:49+0800\n"
+"Language: zh_CN\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: rqrobot/environment.py:65
 msgid ""
-"Environment has not been created. Please Use `Environment.get_instance()`"
-" after rqrobot init"
-msgstr "Environment 并没有被创建，请再 rqrobot 初始化之后使用 `Environment.get_instance() 函数`"
+"Environment has not been created. Please Use `Environment.get_instance()` after "
+"rqrobot init"
+msgstr ""
+"Environment 并没有被创建，请再 rqrobot 初始化之后使用 `Environment."
+"get_instance() 函数`"
 
 #: rqrobot/environment.py:108
 msgid "value {value} has been used for {original_key}"
@@ -39,23 +43,27 @@ msgstr "%s 不能在 %s 中调用。"
 
 #: rqrobot/main.py:71
 msgid ""
-"There is no data between {start_date} and {end_date}. Please check your "
-"data bundle or select other backtest period."
-msgstr "未在 {start_date} 和 {end_date} 区间内查询到数据，请检查并升级您的 data bundle 或者选择其他回测区间。"
+"There is no data between {start_date} and {end_date}. Please check your data "
+"bundle or select other backtest period."
+msgstr ""
+"未在 {start_date} 和 {end_date} 区间内查询到数据，请检查并升级您的 data bundle "
+"或者选择其他回测区间。"
 
 #: rqrobot/main.py:85
 msgid "invalid benchmark {}"
 msgstr ""
-"无效的 Benchmark {}, 请检查您context.benchmark = target_benchmark "
-"中的target_benchmark是否输入正确。"
+"无效的 Benchmark {}, 请检查您context.benchmark = target_benchmark 中的"
+"target_benchmark是否输入正确。"
 
 #: rqrobot/main.py:95
 msgid "benchmark {benchmark} has not been listed on {start_date}"
-msgstr "benchmark {benchmark} 在 {start_date} 还未上市。请重新选择起始日期或benchmark。"
+msgstr ""
+"benchmark {benchmark} 在 {start_date} 还未上市。请重新选择起始日期或benchmark。"
 
 #: rqrobot/main.py:99
 msgid "benchmark {benchmark} has been de_listed on {end_date}"
-msgstr "benchmark {benchmark} 在 {end_date} 已退市。请重新选择结束日期或benchmark。"
+msgstr ""
+"benchmark {benchmark} 在 {end_date} 已退市。请重新选择结束日期或benchmark。"
 
 #: rqrobot/main.py:141
 msgid ""
@@ -69,7 +77,7 @@ msgstr ""
 "[WARNING]\n"
 "目标数据源路径 {data_bundle_path} 不为空\n"
 "更新操作首先会清空该文件件下所有内容\n"
-"您确定要继续吗？\n"
+"您确定要继续吗？"
 
 #: rqrobot/main.py:153
 msgid "try {} ..."
@@ -85,8 +93,7 @@ msgstr "数据下载成功: {bundle_path}"
 
 #: rqrobot/main.py:268
 msgid ""
-"Missing persist provider. You need to set persist_provider before use "
-"persist"
+"Missing persist provider. You need to set persist_provider before use persist"
 msgstr "Persist provider 未加载，加载 Persist provider 方可使用 persist 功能。"
 
 #: rqrobot/main.py:325
@@ -137,15 +144,15 @@ msgstr "[Deprecated]在before_trading函数中，第二个参数bar_dict已经�
 
 #: rqrobot/core/strategy.py:55
 msgid ""
-"[deprecated] before_day_trading is no longer used. use before_trading "
-"instead."
-msgstr "[deprecated] before_day_trading 已经不再使用，请使用 before_trading 代替。"
+"[deprecated] before_day_trading is no longer used. use before_trading instead."
+msgstr ""
+"[deprecated] before_day_trading 已经不再使用，请使用 before_trading 代替。"
 
 #: rqrobot/core/strategy.py:57
 msgid ""
-"[deprecated] before_night_trading is no longer used. use before_trading "
-"instead."
-msgstr "[deprecated] before_night_trading 已经不再使用，请使用 before_trading 代替。"
+"[deprecated] before_night_trading is no longer used. use before_trading instead."
+msgstr ""
+"[deprecated] before_night_trading 已经不再使用，请使用 before_trading 代替。"
 
 #: rqrobot/core/strategy_context.py:253 rqrobot/core/strategy_context.py:258
 #: rqrobot/core/strategy_context.py:263 rqrobot/core/strategy_context.py:267
@@ -211,8 +218,8 @@ msgstr "Limit order 价格应该为正，请检查您的下单价格。"
 #: rqrobot/mod/rqrobot_mod_sys_accounts/api/api_future.py:89
 #: rqrobot/mod/rqrobot_mod_sys_accounts/api/api_future.py:124
 msgid ""
-"Order Creation Failed: close amount {amount} is larger than position "
-"quantity {quantity}"
+"Order Creation Failed: close amount {amount} is larger than position quantity "
+"{quantity}"
 msgstr "订单创建失败: 平仓量 {amount} 大于当前持仓量 {quantity}"
 
 #: rqrobot/mod/rqrobot_mod_sys_accounts/api/api_future.py:286
@@ -332,33 +339,37 @@ msgstr ""
 msgid ""
 "Order Creation Failed: not enough money to buy {order_book_id}, needs "
 "{cost_money:.2f}, cash {cash:.2f}"
-msgstr "订单创建失败: 可用资金不足。当前资金: {cash:.2f}，{order_book_id} 下单所需资金: {cost_money:.2f}。"
+msgstr ""
+"订单创建失败: 可用资金不足。当前资金: {cash:.2f}，{order_book_id} 下单所需资金: "
+"{cost_money:.2f}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/future_position_validator.py:34
 msgid ""
-"Order Creation Failed: not enough today position {order_book_id} to buy "
-"close, target quantity is {quantity}, closable today quantity {closable}"
-msgstr "订单创建失败: 卖方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
+"Order Creation Failed: not enough today position {order_book_id} to buy close, "
+"target quantity is {quantity}, closable today quantity {closable}"
+msgstr ""
+"订单创建失败: 卖方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/future_position_validator.py:45
 msgid ""
-"Order Creation Failed: not enough today position {order_book_id} to sell "
-"close, target quantity is {quantity}, closable today quantity {closable}"
-msgstr "订单创建失败: 买方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
+"Order Creation Failed: not enough today position {order_book_id} to sell close, "
+"target quantity is {quantity}, closable today quantity {closable}"
+msgstr ""
+"订单创建失败: 买方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/future_position_validator.py:55
 msgid ""
-"Order Creation Failed: not enough securities {order_book_id} to buy "
-"close, target sell quantity is {quantity}, sell_closable_quantity "
-"{closable}"
-msgstr "订单创建失败: 卖方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
+"Order Creation Failed: not enough securities {order_book_id} to buy close, "
+"target sell quantity is {quantity}, sell_closable_quantity {closable}"
+msgstr ""
+"订单创建失败: 卖方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/future_position_validator.py:65
 msgid ""
-"Order Creation Failed: not enough securities {order_book_id} to sell "
-"close, target sell quantity is {quantity}, buy_closable_quantity "
-"{closable}"
-msgstr "订单创建失败: 买方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
+"Order Creation Failed: not enough securities {order_book_id} to sell close, "
+"target sell quantity is {quantity}, buy_closable_quantity {closable}"
+msgstr ""
+"订单创建失败: 买方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/is_trading_validator.py:31
 msgid "Order Creation Failed: {order_book_id} is not listed!"
@@ -374,39 +385,37 @@ msgstr "订单创建失败: {order_book_id} 在 {date} 时停牌。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/is_trading_validator.py:52
 msgid ""
-"Order Creation Failed: security {order_book_id} cannot be subscribed on "
-"{date}"
+"Order Creation Failed: security {order_book_id} cannot be subscribed on {date}"
 msgstr "订单创建失败: 基金{order_book_id}在{date}不能申购。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/is_trading_validator.py:59
 msgid ""
-"Order Creation Failed: security {order_book_id} cannot be redeemed on "
-"{date}"
+"Order Creation Failed: security {order_book_id} cannot be redeemed on {date}"
 msgstr "订单创建失败: 基金{order_book_id}在{date}不能赎回。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/price_validator.py:34
 msgid ""
-"Order Creation Failed: limit order price {limit_price} is higher than "
-"limit up {limit_up}."
+"Order Creation Failed: limit order price {limit_price} is higher than limit up "
+"{limit_up}."
 msgstr "订单创建失败: 订单价格 {limit_price} 超过当天涨停板价格 {limit_up}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/price_validator.py:45
 msgid ""
-"Order Creation Failed: limit order price {limit_price} is lower than "
-"limit down {limit_down}."
+"Order Creation Failed: limit order price {limit_price} is lower than limit down "
+"{limit_down}."
 msgstr "订单创建失败: 订单价格 {limit_price} 低于当天跌停板价格 {limit_down}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_risk/validators/stock_position_validator.py:34
 msgid ""
-"Order Creation Failed: not enough stock {order_book_id} to sell, you want"
-" to sell {quantity}, sellable {sellable}"
+"Order Creation Failed: not enough stock {order_book_id} to sell, you want to "
+"sell {quantity}, sellable {sellable}"
 msgstr "订单创建失败: 仓位不足。平仓量: {quantity}，可平数量: {sellable}。"
 
 #: rqrobot/mod/rqrobot_mod_sys_simulation/matcher.py:74
 #: rqrobot/mod/rqrobot_mod_sys_simulation/signal_broker.py:68
 msgid ""
-"Order Cancelled: current security [{order_book_id}] can not be traded in "
-"listed date [{listed_date}]"
+"Order Cancelled: current security [{order_book_id}] can not be traded in listed "
+"date [{listed_date}]"
 msgstr "订单被撤销: [{order_book_id}] 上市首日无法交易。"
 
 #: rqrobot/mod/rqrobot_mod_sys_simulation/matcher.py:79
@@ -429,15 +438,16 @@ msgstr "合约 [{order_book_id}] 流动性不足，拒单。"
 
 #: rqrobot/mod/rqrobot_mod_sys_simulation/matcher.py:136
 msgid ""
-"Order Cancelled: market order {order_book_id} volume {order_volume} due "
-"to volume limit"
-msgstr "订单被撤销: 订单 [{order_book_id}] 的下单量 {order_volume} 超过了成交量限制。"
+"Order Cancelled: market order {order_book_id} volume {order_volume} due to "
+"volume limit"
+msgstr ""
+"订单被撤销: 订单 [{order_book_id}] 的下单量 {order_volume} 超过了成交量限制。"
 
 #: rqrobot/mod/rqrobot_mod_sys_simulation/matcher.py:169
 msgid ""
-"Order Cancelled: market order {order_book_id} volume {order_volume} is "
-"larger than {volume_percent_limit} percent of current bar volume, fill "
-"{filled_volume} actually"
+"Order Cancelled: market order {order_book_id} volume {order_volume} is larger "
+"than {volume_percent_limit} percent of current bar volume, fill {filled_volume} "
+"actually"
 msgstr ""
 "{order_book_id} 下单量 {order_volume} 超过当前 Bar 成交量的 "
 "{volume_percent_limit}%，实际成交 {filled_volume}。"
@@ -462,7 +472,8 @@ msgstr "在 Signal 模式下，不支持 cancel_order 函数。"
 #: rqrobot/mod/rqrobot_mod_sys_simulation/signal_broker.py:90
 #: rqrobot/mod/rqrobot_mod_sys_simulation/signal_broker.py:97
 msgid "You have traded {order_book_id} with {quantity} lots in {bar_status}"
-msgstr "您在 {bar_status} 下成交 {quantity} 手 {order_book_id} (请尽量避免涨跌停时下单)"
+msgstr ""
+"您在 {bar_status} 下成交 {quantity} 手 {order_book_id} (请尽量避免涨跌停时下单)"
 
 #: rqrobot/mod/rqrobot_mod_sys_simulation/simulation_broker.py:100
 msgid "{order_id} order has been cancelled by user."
@@ -522,8 +533,8 @@ msgstr ""
 
 #: rqrobot/mod/rqrobot_mod_sys_stock_realtime/mod.py:33
 msgid ""
-"[Warning] When you use this version of RealtimeTradeMod, history_bars can"
-" only get data from yesterday."
+"[Warning] When you use this version of RealtimeTradeMod, history_bars can only "
+"get data from yesterday."
 msgstr ""
 
 #: rqrobot/mod/rqrobot_mod_sys_stock_realtime/mod.py:37
@@ -544,26 +555,25 @@ msgstr "因为策略上一次运行还没接触，取消执行 {}({}, {})"
 
 #: rqrobot/utils/arg_checker.py:48
 msgid ""
-"function {}: invalid {} argument, expect a value of type {}, got {} "
-"(type: {})"
+"function {}: invalid {} argument, expect a value of type {}, got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:57
 msgid ""
-"function {}: invalid {} argument, expect a valid "
-"instrument/order_book_id/symbol, got {} (type: {})"
+"function {}: invalid {} argument, expect a valid instrument/order_book_id/"
+"symbol, got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:64
 msgid ""
-"function {}: invalid {} argument, expect a valid stock "
-"instrument/order_book_id/symbol, got {} (type: {})"
+"function {}: invalid {} argument, expect a valid stock instrument/order_book_id/"
+"symbol, got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:71
 msgid ""
-"function {}: invalid {} argument, expect a valid future "
-"instrument/order_book_id/symbol, got {} (type: {})"
+"function {}: invalid {} argument, expect a valid future instrument/"
+"order_book_id/symbol, got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:146
@@ -584,8 +594,8 @@ msgstr ""
 
 #: rqrobot/utils/arg_checker.py:193 rqrobot/utils/arg_checker.py:211
 msgid ""
-"function {}: invalid {} argument, expect a string or a list of string, "
-"got {} (type: {})"
+"function {}: invalid {} argument, expect a string or a list of string, got {} "
+"(type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:231 rqrobot/utils/arg_checker.py:236
@@ -610,26 +620,26 @@ msgstr ""
 
 #: rqrobot/utils/arg_checker.py:295
 msgid ""
-"function {}: invalid {} argument, interval should be in form of '1d', "
-"'3m', '4q', '2y', got {} (type: {})"
+"function {}: invalid {} argument, interval should be in form of '1d', '3m', "
+"'4q', '2y', got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:317
 msgid ""
-"function {}: invalid {} argument, quarter should be in form of '2012q3', "
-"got {} (type: {})"
+"function {}: invalid {} argument, quarter should be in form of '2012q3', got {} "
+"(type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:331
 msgid ""
-"function {}: invalid {} argument, should be entity like "
-"Fundamentals.balance_sheet.total_equity, got {} (type: {})"
+"function {}: invalid {} argument, should be entity like Fundamentals."
+"balance_sheet.total_equity, got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/arg_checker.py:350
 msgid ""
-"function {}: invalid {} argument, frequency should be in form of '1m', "
-"'5m', '1d', got {} (type: {})"
+"function {}: invalid {} argument, frequency should be in form of '1m', '5m', "
+"'1d', got {} (type: {})"
 msgstr ""
 
 #: rqrobot/utils/config.py:107
@@ -674,40 +684,35 @@ msgstr ""
 #~ msgstr "请设置账户及初始资金"
 
 #~ msgid ""
-#~ "Order Rejected: not enough money to "
-#~ "buy {order_book_id}, needs {cost_money:.2f}, "
-#~ "cash {cash:.2f}"
+#~ "Order Rejected: not enough money to buy {order_book_id}, needs "
+#~ "{cost_money:.2f}, cash {cash:.2f}"
 #~ msgstr ""
-#~ "订单被拒单: 可用资金不足。当前资金: {cash:.2f}，{order_book_id} "
-#~ "下单所需资金: {cost_money:.2f}。"
+#~ "订单被拒单: 可用资金不足。当前资金: {cash:.2f}，{order_book_id} 下单所需资"
+#~ "金: {cost_money:.2f}。"
 
 #~ msgid ""
-#~ "Order Rejected: not enough today "
-#~ "position {order_book_id} to buy close, "
-#~ "target quantity is {quantity}, closable "
-#~ "today quantity {closable}"
-#~ msgstr "订单被拒单: 卖方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
+#~ "Order Rejected: not enough today position {order_book_id} to buy close, "
+#~ "target quantity is {quantity}, closable today quantity {closable}"
+#~ msgstr ""
+#~ "订单被拒单: 卖方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #~ msgid ""
-#~ "Order Rejected: not enough today "
-#~ "position {order_book_id} to sell close, "
-#~ "target quantity is {quantity}, closable "
-#~ "today quantity {closable}"
-#~ msgstr "订单被拒单: 买方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
+#~ "Order Rejected: not enough today position {order_book_id} to sell close, "
+#~ "target quantity is {quantity}, closable today quantity {closable}"
+#~ msgstr ""
+#~ "订单被拒单: 买方向可平今仓不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #~ msgid ""
-#~ "Order Rejected: not enough securities "
-#~ "{order_book_id} to buy close, target "
-#~ "sell quantity is {quantity}, "
-#~ "sell_closable_quantity {closable}"
-#~ msgstr "订单被拒单: 卖方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
+#~ "Order Rejected: not enough securities {order_book_id} to buy close, target "
+#~ "sell quantity is {quantity}, sell_closable_quantity {closable}"
+#~ msgstr ""
+#~ "订单被拒单: 卖方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #~ msgid ""
-#~ "Order Rejected: not enough securities "
-#~ "{order_book_id} to sell close, target "
-#~ "sell quantity is {quantity}, "
-#~ "buy_closable_quantity {closable}"
-#~ msgstr "订单被拒单: 买方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
+#~ "Order Rejected: not enough securities {order_book_id} to sell close, target "
+#~ "sell quantity is {quantity}, buy_closable_quantity {closable}"
+#~ msgstr ""
+#~ "订单被拒单: 买方向可平仓位不足。平仓手数: {quantity}，可平手数: {closable}。"
 
 #~ msgid "Order Rejected: {order_book_id} is not listed!"
 #~ msgstr "订单被拒单: {order_book_id} 未上市。"
@@ -725,20 +730,16 @@ msgstr ""
 #~ msgstr "基金{order_book_id}在{date}不能赎回。"
 
 #~ msgid ""
-#~ "Order Rejected: limit order price "
-#~ "{limit_price} is higher than limit up"
-#~ " {limit_up}."
+#~ "Order Rejected: limit order price {limit_price} is higher than limit up "
+#~ "{limit_up}."
 #~ msgstr "订单被拒单: 订单价格 {limit_price} 超过当天涨停板价格 {limit_up}。"
 
 #~ msgid ""
-#~ "Order Rejected: limit order price "
-#~ "{limit_price} is lower than limit down"
-#~ " {limit_down}."
+#~ "Order Rejected: limit order price {limit_price} is lower than limit down "
+#~ "{limit_down}."
 #~ msgstr "订单被拒单: 订单价格 {limit_price} 低于当天跌停板价格 {limit_down}。"
 
 #~ msgid ""
-#~ "Order Rejected: not enough stock "
-#~ "{order_book_id} to sell, you want to "
-#~ "sell {quantity}, sellable {sellable}"
+#~ "Order Rejected: not enough stock {order_book_id} to sell, you want to sell "
+#~ "{quantity}, sellable {sellable}"
 #~ msgstr "订单被拒单: 仓位不足。平仓量: {quantity}，可平数量: {sellable}。"
-
